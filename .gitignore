@@ -39,3 +39,6 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# SDD process workspace (ledger, briefs, reports, review diffs) — not app code
+/.superpowers/
