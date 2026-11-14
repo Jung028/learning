@@ -43,7 +43,8 @@ The clickable prototype has 16 screens and a design system (colours, fonts, shap
 
 Visual basics:
 
-- Warm paper background `#FAF7F2`, white cards, indigo `#4338CA` for the main action.
+- Coffee palette: latte background `#F5EDE3`, milk-foam cards `#FFFBF6`, espresso text `#2B1A12`, mocha `#6F4630` for the main action, caramel `#C98B4B` for streaks, matcha and cherry for right and wrong.
+- Pill-shaped 52px buttons and soft, rounded cards.
 - Fraunces for titles, Inter for reading and buttons.
 - Buttons 52 px tall with 14 px corners, touch targets at least 44 px.
 - Right and wrong answers always carry an icon and a word, never colour alone.
