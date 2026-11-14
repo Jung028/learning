@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-type ButtonVariant = "primary" | "secondary" | "text" | "danger";
+export type ButtonVariant = "primary" | "secondary" | "text" | "danger";
 
 interface ButtonProps {
   variant?: ButtonVariant;

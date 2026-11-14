@@ -2,6 +2,7 @@ import { describe, expect, test, mock } from "bun:test";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { Button, IconButton } from "./Button";
+import type { ButtonVariant } from "./Button";
 
 describe("Button", () => {
   test("renders its children", () => {
@@ -19,8 +20,8 @@ describe("Button", () => {
     ["secondary", "bg-cappuccino"],
     ["text", "text-mocha"],
     ["danger", "border-cherry"],
-  ])("variant=%s gets class %s", (variant, className) => {
-    render(<Button variant={variant as any}>Go</Button>);
+  ] satisfies [ButtonVariant, string][])("variant=%s gets class %s", (variant, className) => {
+    render(<Button variant={variant}>Go</Button>);
     expect(screen.getByRole("button")).toHaveClass(className);
   });
 
