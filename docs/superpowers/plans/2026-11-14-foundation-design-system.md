@@ -301,9 +301,13 @@ git commit -m "feat: wire the coffee-palette design tokens into the Tailwind the
 
 **Interfaces:**
 - Consumes: Tailwind classes from Task 2 (`bg-mocha`, `bg-cappuccino`, `text-mocha`, `text-ink-hover`, `border-cherry`, `text-cherry`, `rounded-pill`).
-- Produces: `Button({ variant?: "primary" | "secondary" | "text" | "danger"; type?: "button" | "submit"; disabled?: boolean; onClick?: () => void; children: React.ReactNode }): JSX.Element` (default `variant` `"primary"`, default `type` `"button"`) and `IconButton({ label: string; icon: React.ReactNode; onClick?: () => void }): JSX.Element`, both exported from `components/ui/Button.tsx`.
+- Produces: `Button({ variant?: "primary" | "secondary" | "text" | "danger"; type?: "button" | "submit"; disabled?: boolean; onClick?: () => void; children: React.ReactNode }): JSX.Element` (default `variant` `"primary"`, default `type` `"button"`) and `IconButton({ label: string; icon: React.ReactNode; onClick?: () => void }): JSX.Element`, both exported from `components/ui/Button.tsx`. Also installs `@testing-library/user-event` as a project devDependency — this task is the first to need it, and Tasks 4, 5, and 9 reuse it afterward without reinstalling.
 
-- [ ] **Step 1: Write the failing tests**
+- [ ] **Step 1: Install the shared `user-event` dependency**
+
+Run: `bun add -d @testing-library/user-event`
+
+- [ ] **Step 2: Write the failing tests**
 
 Create `components/ui/Button.test.tsx`:
 
@@ -371,24 +375,24 @@ describe("IconButton", () => {
 });
 ```
 
-- [ ] **Step 2: Run tests to verify they fail**
+- [ ] **Step 3: Run tests to verify they fail**
 
 Run: `bun test components/ui/Button.test.tsx`
 Expected: FAIL (module does not exist)
 
-- [ ] **Step 3: Implement `Button` and `IconButton` in `components/ui/Button.tsx`**
+- [ ] **Step 4: Implement `Button` and `IconButton` in `components/ui/Button.tsx`**
 
 One line on the approach: a single internal `variantClasses` map keyed by `variant`, merged with the fixed `h-[52px] rounded-pill font-sans font-semibold` base classes; `IconButton` is a second, smaller component in the same file sharing no code with `Button` beyond the file (different fixed size/shape), with `label` passed straight through to `aria-label`.
 
-- [ ] **Step 4: Run tests to verify they pass**
+- [ ] **Step 5: Run tests to verify they pass**
 
 Run: `bun test components/ui/Button.test.tsx`
 Expected: PASS
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 6: Commit**
 
 ```bash
-git add components/ui/Button.tsx components/ui/Button.test.tsx
+git add package.json bun.lock components/ui/Button.tsx components/ui/Button.test.tsx
 git commit -m "feat: add Button and IconButton components"
 ```
 
