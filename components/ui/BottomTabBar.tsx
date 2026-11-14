@@ -15,7 +15,7 @@ interface BottomTabBarProps {
 
 export function BottomTabBar({ tabs, activeKey }: BottomTabBarProps) {
   return (
-    <nav className="grid grid-cols-4 gap-0 bg-foam border border-crema rounded-card p-2 shadow-sm">
+    <nav className="grid grid-cols-4 gap-0 bg-foam border border-crema rounded-card p-2 shadow-[0_2px_12px_rgba(43,26,18,0.07)]">
       {tabs.map((tab) => {
         const isActive = tab.key === activeKey;
         return (
