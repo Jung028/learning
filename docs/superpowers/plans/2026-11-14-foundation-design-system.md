@@ -757,6 +757,7 @@ Create `components/ui/BottomSheet.test.tsx`:
 
 ```tsx
 import { describe, expect, test, mock } from "bun:test";
+import { useState } from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { BottomSheet } from "./BottomSheet";
@@ -827,7 +828,7 @@ describe("BottomSheet", () => {
 
   test("restores focus to the trigger on close", () => {
     function Harness() {
-      const [open, setOpen] = require("react").useState(false);
+      const [open, setOpen] = useState(false);
       return (
         <div>
           <button onClick={() => setOpen(true)}>Open</button>
