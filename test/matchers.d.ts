@@ -4,7 +4,8 @@ import { expect } from "bun:test";
 declare module "bun:test" {
   // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- declaration merging to add Testing Library matchers to Bun's `expect`
   interface Matchers<T>
-    extends TestingLibraryMatchers<typeof expect.stringContaining, T> {}
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type -- declaration merging to add Testing Library matchers to Bun's `expect`
-  interface AsymmetricMatchers extends TestingLibraryMatchers {}
+    extends TestingLibraryMatchers<
+      ReturnType<typeof expect.stringContaining>,
+      T
+    > {}
 }
