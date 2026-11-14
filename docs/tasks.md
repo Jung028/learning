@@ -15,8 +15,8 @@ Backlog in build order. `FR-n` refers to the requirement IDs in [system-analysis
 
 ## Phase 1: foundation
 
-- [ ] T-010 Create the Next.js project with TypeScript and Tailwind; map design tokens to the theme (ADR-002)
-- [ ] T-011 Build shared components: primary, secondary, text and icon buttons, chips, toggles, cards, progress bar, tab bar, bottom sheet
+- [x] T-010 Create the Next.js project with TypeScript and Tailwind; map design tokens to the theme (ADR-002)
+- [x] T-011 Build shared components: primary, secondary, text and icon buttons, chips, toggles, cards, progress bar, tab bar, bottom sheet
 - [ ] T-012 Set up Supabase project, tables and row-level security (ADR-004)
 - [ ] T-013 Sign-in with email link, Apple and Google (FR-11)
 - [ ] T-014 Deploy to Vercel with a preview per pull request (ADR-005)
