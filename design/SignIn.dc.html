@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn sign in</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:72px 20px 32px;gap:20px">
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="width:64px;height:64px;border-radius:20px;background:#6F4630;color:#FFFBF6;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(94,59,40,0.28)"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3c-.8 1 .8 1.6 0 2.6M12 3c-.8 1 .8 1.6 0 2.6"/></svg></div>
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:36px;line-height:42px">Learn anything,<br>one swipe at a time.</h1>
+<p style="margin:0;font-size:16px;line-height:24px;color:#6F5A4C">Type a topic. Claude builds the course. A quiz after every chapter makes it stick.</p>
+</div>
+
+<div style="flex:1"></div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<a href="Onboarding.dc.html" style="height:52px;border-radius:999px;background:#2B1A12;color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Continue with Apple</a>
+<a href="Onboarding.dc.html" style="height:52px;border-radius:999px;background:#FFFBF6;border:1px solid #E0D2C0;color:#2B1A12;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Continue with Google</a>
+<div style="display:flex;align-items:center;gap:12px;color:#6F5A4C;font-size:13px"><div style="flex:1;height:1px;background:#E0D2C0"></div>or<div style="flex:1;height:1px;background:#E0D2C0"></div></div>
+<label for="email" style="font-size:14px;font-weight:600">Email</label>
+<input id="email" type="email" placeholder="you@example.com" style="box-sizing:border-box;height:52px;border:1px solid #E0D2C0;border-radius:14px;background:#FFFBF6;color:#2B1A12;font:400 16px 'Inter',system-ui,sans-serif;padding:0 16px">
+<a href="Onboarding.dc.html" style="height:52px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Send me a sign-in link</a>
+<div style="font-size:12px;line-height:18px;color:#6F5A4C;text-align:center">By continuing you agree to the Terms and Privacy Policy. Courses are written by AI and can contain mistakes.</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

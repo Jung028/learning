@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn settings</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="position:relative;width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden">
+
+<div style="flex:1;min-height:0;overflow-y:auto;padding:56px 20px 16px;display:flex;flex-direction:column;gap:20px">
+
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:32px;line-height:38px">Settings</h1>
+
+<a href="Upgrade.dc.html" style="text-decoration:none;color:inherit;background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:16px;display:flex;align-items:center;gap:14px">
+<div style="width:48px;height:48px;border-radius:999px;background:#6F4630;color:#FFFBF6;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:22px;display:flex;align-items:center;justify-content:center">A</div>
+<div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:600">Your account</div><div style="font-size:13px;color:#6F5A4C">Free plan · 1 of 3 modules used</div></div>
+<div style="margin-left:auto;font-size:14px;font-weight:600;color:#6F4630">Upgrade</div>
+</a>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px">Learning</div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:16px;display:flex;flex-direction:column;gap:14px">
+<div style="font-size:14px;font-weight:600">Default level</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{levels}}" as="l" hint-placeholder-count="3"><button type="button" onClick="{{ l.pick }}" aria-pressed="{{ l.on }}" style="{{ l.style }}">{{ l.label }}</button></sc-for>
+</div>
+<div style="font-size:14px;font-weight:600">Default length</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{depths}}" as="d" hint-placeholder-count="3"><button type="button" onClick="{{ d.pick }}" aria-pressed="{{ d.on }}" style="{{ d.style }}">{{ d.label }}</button></sc-for>
+</div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px">Reading</div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:16px;display:flex;flex-direction:column;gap:12px">
+<div style="font-size:14px;font-weight:600">Text size</div>
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{sizes}}" as="z" hint-placeholder-count="3"><button type="button" onClick="{{ z.pick }}" aria-pressed="{{ z.on }}" style="{{ z.style }}">{{ z.label }}</button></sc-for>
+</div>
+<div style="{{previewStyle}}">Some things are up to us, and some are not.</div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px">Reminders and voice</div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:4px 16px;display:flex;flex-direction:column">
+<div style="min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:600">Daily reminder</div><div style="font-size:13px;color:#6F5A4C">{{reminderText}}</div></div>
+<button type="button" role="switch" aria-label="Daily reminder" aria-checked="{{reminder}}" onClick="{{toggleReminder}}" style="{{reminderTrack}}"><span style="{{reminderKnob}}"></span></button></div>
+<div style="height:1px;background:#E0D2C0"></div>
+<div style="min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:600">Live discussions with Claude</div><div style="font-size:13px;color:#6F5A4C">Hold to speak. Up to 10 minutes a session.</div></div>
+<button type="button" role="switch" aria-label="Live discussions" aria-checked="{{voice}}" onClick="{{toggleVoice}}" style="{{voiceTrack}}"><span style="{{voiceKnob}}"></span></button></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px">Data and account</div>
+<button type="button" onClick="{{exportData}}" style="height:52px;border:0;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 16px 'Inter',system-ui,sans-serif">Export my data</button>
+<sc-if value="{{toast}}" hint-placeholder-val="{{ false }}"><div style="font-size:14px;color:#3F6B3A;font-weight:600;background:#E5EFDD;border-radius:12px;padding:10px 14px">We’ll email you a download link.</div></sc-if>
+<a href="SignIn.dc.html" style="height:52px;border-radius:999px;background:#EADBC8;color:#4A2E1E;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Sign out</a>
+<button type="button" onClick="{{openConfirm}}" style="height:52px;border:1px solid #A23B2A;border-radius:999px;background:#FFFBF6;color:#A23B2A;font:600 16px 'Inter',system-ui,sans-serif">Delete account</button>
+</div>
+
+</div>
+
+<nav aria-label="Main" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#FFFBF6;border-top:1px solid #E0D2C0;padding:8px 12px 24px">
+<a href="Home.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F5A4C;font-size:12px;font-weight:500;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg>Home</a>
+<a href="Library.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F5A4C;font-size:12px;font-weight:500;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h6v16H5zM13 4h6v16h-6z"/></svg>Library</a>
+<a href="Stash.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F5A4C;font-size:12px;font-weight:500;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-4-5 4z"/></svg>Stash</a>
+<div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F4630;font-size:12px;font-weight:600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20c1-4 13-4 14 0"/></svg>You</div>
+</nav>
+
+<sc-if value="{{confirm}}" hint-placeholder-val="{{ false }}">
+<div style="position:absolute;left:0;right:0;top:0;bottom:0;background:rgba(43,26,18,0.5)"></div>
+<div role="dialog" aria-label="Delete account" style="position:absolute;left:0;right:0;bottom:0;box-sizing:border-box;background:#FFFBF6;border-radius:32px 32px 0 0;padding:24px 20px 36px;display:flex;flex-direction:column;gap:12px">
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:24px">Delete your account?</div>
+<p style="margin:0;font-size:16px;line-height:24px;color:#6F5A4C">All your modules, progress and saved cards are removed. This cannot be undone.</p>
+<a href="SignIn.dc.html" style="height:52px;border-radius:999px;background:#A23B2A;color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Yes, delete everything</a>
+<button type="button" onClick="{{closeConfirm}}" style="height:52px;border:0;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 16px 'Inter',system-ui,sans-serif">Cancel</button>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { level: 'Beginner', depth: '5 chapters', size: 'Medium', reminder: true, voice: true, confirm: false, toast: false };
+  }
+  chip(on) {
+    return on
+      ? "height:44px;padding:0 16px;border:2px solid #6F4630;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 15px 'Inter',system-ui,sans-serif"
+      : "height:44px;padding:0 16px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;font:500 15px 'Inter',system-ui,sans-serif";
+  }
+  track(on) { return 'width:52px;height:32px;border:0;border-radius:999px;padding:3px;box-sizing:border-box;display:flex;align-items:center;justify-content:' + (on ? 'flex-end' : 'flex-start') + ';background:' + (on ? '#6F4630' : '#8F7B6C') + ';flex:none'; }
+  knob() { return 'width:26px;height:26px;border-radius:999px;background:#FFFBF6;display:block'; }
+  renderVals() {
+    const s = this.state;
+    const group = (list, key) => list.map((label) => ({ label, on: s[key] === label, style: this.chip(s[key] === label), pick: () => this.setState({ [key]: label }) }));
+    const px = s.size === 'Small' ? '16px' : s.size === 'Large' ? '22px' : '19px';
+    const lh = s.size === 'Small' ? '24px' : s.size === 'Large' ? '32px' : '28px';
+    return {
+      levels: group(['Beginner', 'Intermediate', 'Advanced'], 'level'),
+      depths: group(['3 chapters', '5 chapters', '8 chapters'], 'depth'),
+      sizes: group(['Small', 'Medium', 'Large'], 'size'),
+      previewStyle: 'background:#F5EDE3;border-radius:12px;padding:12px 14px;font-size:' + px + ';line-height:' + lh,
+      reminder: s.reminder,
+      reminderText: s.reminder ? 'Every day at 8:00 am' : 'Off',
+      reminderTrack: this.track(s.reminder),
+      reminderKnob: this.knob(),
+      toggleReminder: () => this.setState({ reminder: !this.state.reminder }),
+      voice: s.voice,
+      voiceTrack: this.track(s.voice),
+      voiceKnob: this.knob(),
+      toggleVoice: () => this.setState({ voice: !this.state.voice }),
+      confirm: s.confirm,
+      openConfirm: () => this.setState({ confirm: true }),
+      closeConfirm: () => this.setState({ confirm: false }),
+      toast: s.toast,
+      exportData: () => this.setState({ toast: true })
+    };
+  }
+}
+</script>
+</body>
+</html>

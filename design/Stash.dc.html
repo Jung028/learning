@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn stash</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden">
+
+<div style="flex:1;min-height:0;overflow:hidden;padding:56px 20px 0;display:flex;flex-direction:column;gap:16px">
+
+<div style="display:flex;flex-direction:column;gap:4px">
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:32px;line-height:38px">Stash</h1>
+<div style="font-size:14px;color:#6F5A4C">{{count}}</div>
+</div>
+
+<a href="Review.dc.html" style="height:52px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Start daily review</a>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{cards}}" as="c" hint-placeholder-count="3">
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:16px;padding:14px 16px;display:flex;flex-direction:column;gap:8px">
+<div style="font-size:12px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#6F4630">{{c.where}}</div>
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px;line-height:26px">{{c.title}}</div>
+<div style="font-size:14px;line-height:21px;color:#6F5A4C">{{c.snippet}}</div>
+<div style="display:flex;gap:10px">
+<a href="Reader.dc.html" style="height:40px;padding:0 16px;border-radius:999px;background:#EADBC8;color:#4A2E1E;font-size:14px;font-weight:600;display:flex;align-items:center;text-decoration:none">Open in chapter</a>
+<button type="button" onClick="{{ c.remove }}" style="height:40px;padding:0 16px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;font:600 14px 'Inter',system-ui,sans-serif">Remove</button>
+</div>
+</div>
+</sc-for>
+</div>
+
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:22px">Nothing saved yet</div>
+<div style="font-size:15px;line-height:22px;color:#6F5A4C">Tap the bookmark on any card while reading. It lands here for review.</div>
+<a href="Library.dc.html" style="height:44px;padding:0 18px;border-radius:999px;background:#6F4630;color:#FFFBF6;font-size:15px;font-weight:600;display:flex;align-items:center;text-decoration:none">Go to your library</a>
+<button type="button" onClick="{{restore}}" style="height:44px;padding:0 18px;border:0;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 15px 'Inter',system-ui,sans-serif">Undo: bring them back</button>
+</div>
+</sc-if>
+
+</div>
+
+<nav aria-label="Main" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#FFFBF6;border-top:1px solid #E0D2C0;padding:8px 12px 24px">
+<a href="Home.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F5A4C;font-size:12px;font-weight:500;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg>Home</a>
+<a href="Library.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F5A4C;font-size:12px;font-weight:500;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h6v16H5zM13 4h6v16h-6z"/></svg>Library</a>
+<a href="Stash.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F4630;font-size:12px;font-weight:600;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-4-5 4z"/></svg>Stash</a>
+<a href="Settings.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F5A4C;font-size:12px;font-weight:500;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20c1-4 13-4 14 0"/></svg>You</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { removed: [] };
+  }
+  data() {
+    return [
+      { id: 'a', where: 'Stoicism · Chapter 1', title: 'Control what you can', snippet: 'Some things are up to us, like our opinions and choices. Others are not, like the weather.' },
+      { id: 'b', where: 'Stoicism · Chapter 1', title: 'Character is the goal', snippet: 'Good character, or virtue, is the only true good for a Stoic.' },
+      { id: 'c', where: 'Game theory · Chapter 2', title: 'The prisoner’s dilemma', snippet: 'Two players each do better by betraying, yet both lose if they do.' }
+    ];
+  }
+  renderVals() {
+    const s = this.state;
+    const left = this.data().filter((c) => s.removed.indexOf(c.id) < 0);
+    return {
+      cards: left.map((c) => Object.assign({}, c, { remove: () => this.setState({ removed: this.state.removed.concat([c.id]) }) })),
+      empty: left.length === 0,
+      count: left.length === 1 ? '1 saved card' : left.length + ' saved cards',
+      restore: () => this.setState({ removed: [] })
+    };
+  }
+}
+</script>
+</body>
+</html>

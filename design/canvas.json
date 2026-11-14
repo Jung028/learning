@@ -1,0 +1,280 @@
+{
+ "v": 3,
+ "createdOnFiles": {
+  "v": 1,
+  "at": "2026-11-13T00:00:00Z"
+ },
+ "title": "SwipeLearn: Design System and Prototype Screens",
+ "launch": {
+  "view": "canvas"
+ },
+ "pages": [],
+ "boards": {
+  "Main.dc.html": {
+   "x": 0,
+   "y": 0,
+   "w": 1400,
+   "h": 5400,
+   "title": "Design system and button map"
+  },
+  "Home.dc.html": {
+   "x": 1480,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "1 Home",
+   "is_interactive": true
+  },
+  "Create.dc.html": {
+   "x": 1950,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "2 New module",
+   "is_interactive": true
+  },
+  "Outline.dc.html": {
+   "x": 2420,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "3 Outline",
+   "is_interactive": true
+  },
+  "Reader.dc.html": {
+   "x": 2890,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "4 Swipe reader",
+   "is_interactive": true
+  },
+  "Quiz.dc.html": {
+   "x": 3360,
+   "y": 0,
+   "w": 390,
+   "h": 844,
+   "title": "5 Chapter quiz and results",
+   "is_interactive": true
+  },
+  "Module.dc.html": {
+   "x": 1480,
+   "y": 1330,
+   "w": 390,
+   "h": 844,
+   "title": "6 Module page",
+   "is_interactive": true
+  },
+  "Discuss.dc.html": {
+   "x": 1950,
+   "y": 1330,
+   "w": 390,
+   "h": 844,
+   "title": "7 Discussion, hold to speak",
+   "is_interactive": true
+  },
+  "Memorise.dc.html": {
+   "x": 2420,
+   "y": 1330,
+   "w": 390,
+   "h": 844,
+   "title": "8 Memorise flashcards",
+   "is_interactive": true
+  },
+  "Settings.dc.html": {
+   "x": 2890,
+   "y": 1330,
+   "w": 390,
+   "h": 844,
+   "title": "9 Settings",
+   "is_interactive": true
+  },
+  "SignIn.dc.html": {
+   "x": 1480,
+   "y": 2530,
+   "w": 390,
+   "h": 844,
+   "title": "10 Sign in",
+   "is_interactive": true
+  },
+  "Onboarding.dc.html": {
+   "x": 1950,
+   "y": 2530,
+   "w": 390,
+   "h": 844,
+   "title": "11 Welcome",
+   "is_interactive": true
+  },
+  "Generating.dc.html": {
+   "x": 2420,
+   "y": 2530,
+   "w": 390,
+   "h": 844,
+   "title": "12 Generating outline",
+   "is_interactive": true
+  },
+  "Library.dc.html": {
+   "x": 2890,
+   "y": 2530,
+   "w": 390,
+   "h": 844,
+   "title": "13 Library",
+   "is_interactive": true
+  },
+  "Stash.dc.html": {
+   "x": 3360,
+   "y": 2530,
+   "w": 390,
+   "h": 844,
+   "title": "14 Stash",
+   "is_interactive": true
+  },
+  "Review.dc.html": {
+   "x": 3830,
+   "y": 2530,
+   "w": 390,
+   "h": 844,
+   "title": "15 Daily review",
+   "is_interactive": true
+  },
+  "Upgrade.dc.html": {
+   "x": 4300,
+   "y": 2530,
+   "w": 390,
+   "h": 844,
+   "title": "16 Upgrade",
+   "is_interactive": true
+  },
+  "Desktop-Home.dc.html": {
+   "x": 3900,
+   "y": 0,
+   "w": 1280,
+   "h": 800,
+   "title": "D1 Home",
+   "is_interactive": true
+  },
+  "Desktop-Create.dc.html": {
+   "x": 5260,
+   "y": 0,
+   "w": 1280,
+   "h": 800,
+   "title": "D2 New module",
+   "is_interactive": true
+  },
+  "Desktop-Outline.dc.html": {
+   "x": 6620,
+   "y": 0,
+   "w": 1280,
+   "h": 800,
+   "title": "D3 Outline",
+   "is_interactive": true
+  },
+  "Desktop-Reader.dc.html": {
+   "x": 3900,
+   "y": 880,
+   "w": 1280,
+   "h": 800,
+   "title": "D4 Reader",
+   "is_interactive": true
+  },
+  "Desktop-Quiz.dc.html": {
+   "x": 5260,
+   "y": 880,
+   "w": 1280,
+   "h": 800,
+   "title": "D5 Quiz and results",
+   "is_interactive": true
+  },
+  "Desktop-Module.dc.html": {
+   "x": 6620,
+   "y": 880,
+   "w": 1280,
+   "h": 800,
+   "title": "D6 Module page",
+   "is_interactive": true
+  },
+  "Desktop-Library.dc.html": {
+   "x": 3900,
+   "y": 1760,
+   "w": 1280,
+   "h": 800,
+   "title": "D7 Library",
+   "is_interactive": true
+  },
+  "Desktop-Stash.dc.html": {
+   "x": 5260,
+   "y": 1760,
+   "w": 1280,
+   "h": 800,
+   "title": "D8 Stash",
+   "is_interactive": true
+  },
+  "Desktop-Settings.dc.html": {
+   "x": 6620,
+   "y": 1760,
+   "w": 1280,
+   "h": 800,
+   "title": "D9 Settings",
+   "is_interactive": true
+  }
+ },
+ "order": [
+  "Main.dc.html",
+  "Home.dc.html",
+  "Create.dc.html",
+  "Outline.dc.html",
+  "Reader.dc.html",
+  "Quiz.dc.html",
+  "Module.dc.html",
+  "Discuss.dc.html",
+  "Memorise.dc.html",
+  "Settings.dc.html",
+  "SignIn.dc.html",
+  "Onboarding.dc.html",
+  "Generating.dc.html",
+  "Library.dc.html",
+  "Stash.dc.html",
+  "Review.dc.html",
+  "Upgrade.dc.html",
+  "Desktop-Home.dc.html",
+  "Desktop-Create.dc.html",
+  "Desktop-Outline.dc.html",
+  "Desktop-Reader.dc.html",
+  "Desktop-Quiz.dc.html",
+  "Desktop-Module.dc.html",
+  "Desktop-Library.dc.html",
+  "Desktop-Stash.dc.html",
+  "Desktop-Settings.dc.html"
+ ],
+ "notes": {
+  "t1": {
+   "x": 0,
+   "y": -300,
+   "text": "SwipeLearn design system",
+   "kind": "title1",
+   "maxW": 1400
+  },
+  "t2": {
+   "x": 1480,
+   "y": -300,
+   "text": "Prototype: press Play and tap through",
+   "kind": "title1",
+   "maxW": 2270
+  },
+  "t3": {
+   "x": 1480,
+   "y": 1030,
+   "text": "New pages: module, discussion, memorise, settings",
+   "kind": "title1",
+   "maxW": 1800
+  },
+  "t4": {
+   "x": 1480,
+   "y": 2230,
+   "text": "Sign-in, library, stash, review and upgrade pages",
+   "kind": "title1",
+   "maxW": 3210
+  }
+ },
+ "designSystems": []
+}

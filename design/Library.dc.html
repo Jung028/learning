@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn library</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden">
+
+<div style="flex:1;min-height:0;overflow:hidden;padding:56px 20px 0;display:flex;flex-direction:column;gap:16px">
+
+<div style="display:flex;align-items:center;justify-content:space-between">
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:32px;line-height:38px">Library</h1>
+<a href="Create.dc.html" aria-label="New module" style="width:44px;height:44px;border-radius:999px;background:#6F4630;color:#FFFBF6;display:flex;align-items:center;justify-content:center;text-decoration:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></a>
+</div>
+
+<div>
+<label for="q" style="position:absolute;left:-9999px">Search modules</label>
+<input id="q" type="search" placeholder="Search your modules" onInput="{{onSearch}}" style="box-sizing:border-box;width:100%;height:48px;border:1px solid #E0D2C0;border-radius:14px;background:#FFFBF6;color:#2B1A12;font:400 16px 'Inter',system-ui,sans-serif;padding:0 16px">
+</div>
+
+<div style="display:flex;gap:8px;flex-wrap:wrap">
+<sc-for list="{{filters}}" as="f" hint-placeholder-count="4"><button type="button" onClick="{{ f.pick }}" aria-pressed="{{ f.on }}" style="{{ f.style }}">{{ f.label }}</button></sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{rows}}" as="m" hint-placeholder-count="3">
+<a href="Module.dc.html" style="text-decoration:none;color:inherit;display:flex;align-items:center;gap:12px;background:#FFFBF6;border:1px solid #E0D2C0;border-radius:16px;padding:14px 16px">
+<div style="flex:1;display:flex;flex-direction:column;gap:6px"><div style="font-size:16px;font-weight:600;line-height:22px">{{m.title}}</div><div style="font-size:13px;color:#6F5A4C">{{m.sub}}</div><div style="height:6px;border-radius:999px;background:#E0D2C0;overflow:hidden"><div style="{{ m.bar }}"></div></div></div>
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6F5A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+</a>
+</sc-for>
+</div>
+
+<sc-if value="{{empty}}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:12px;align-items:flex-start">
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:22px">No modules match</div>
+<div style="font-size:15px;line-height:22px;color:#6F5A4C">Try another word, or start a new module on that topic.</div>
+<button type="button" onClick="{{clear}}" style="height:44px;padding:0 18px;border:0;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 15px 'Inter',system-ui,sans-serif">Clear search and filters</button>
+<a href="Create.dc.html" style="height:44px;padding:0 18px;border-radius:999px;background:#6F4630;color:#FFFBF6;font-size:15px;font-weight:600;display:flex;align-items:center;text-decoration:none">New module</a>
+</div>
+</sc-if>
+
+</div>
+
+<nav aria-label="Main" style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#FFFBF6;border-top:1px solid #E0D2C0;padding:8px 12px 24px">
+<a href="Home.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F5A4C;font-size:12px;font-weight:500;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg>Home</a>
+<a href="Library.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F4630;font-size:12px;font-weight:600;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h6v16H5zM13 4h6v16h-6z"/></svg>Library</a>
+<a href="Stash.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F5A4C;font-size:12px;font-weight:500;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-4-5 4z"/></svg>Stash</a>
+<a href="Settings.dc.html" style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:6px 0;color:#6F5A4C;font-size:12px;font-weight:500;text-decoration:none"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20c1-4 13-4 14 0"/></svg>You</a>
+</nav>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { filter: 'All', q: '' };
+  }
+  data() {
+    return [
+      { title: 'Stoicism, in 5 chapters', status: 'In progress', sub: 'In progress · 0 of 5 chapters done', pct: 4 },
+      { title: 'Introduction to game theory', status: 'In progress', sub: 'In progress · 2 of 6 chapters done', pct: 33 },
+      { title: 'How the stock market works', status: 'Done', sub: 'Done · average quiz score 86%', pct: 100 },
+      { title: 'Roman history in 8 chapters', status: 'Archived', sub: 'Archived · 5 of 8 chapters done', pct: 62 }
+    ];
+  }
+  chip(on) {
+    return on
+      ? "height:40px;padding:0 16px;border:2px solid #6F4630;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 14px 'Inter',system-ui,sans-serif"
+      : "height:40px;padding:0 16px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;font:500 14px 'Inter',system-ui,sans-serif";
+  }
+  renderVals() {
+    const s = this.state;
+    const rows = this.data()
+      .filter((m) => (s.filter === 'All' ? m.status !== 'Archived' : m.status === s.filter))
+      .filter((m) => m.title.toLowerCase().indexOf(s.q.toLowerCase()) >= 0)
+      .map((m) => ({ title: m.title, sub: m.sub, bar: 'height:6px;border-radius:999px;background:' + (m.status === 'Done' ? '#3F6B3A' : '#6F4630') + ';width:' + m.pct + '%' }));
+    return {
+      rows,
+      empty: rows.length === 0,
+      filters: ['All', 'In progress', 'Done', 'Archived'].map((label) => ({ label, on: s.filter === label, style: this.chip(s.filter === label), pick: () => this.setState({ filter: label }) })),
+      onSearch: (e) => this.setState({ q: e.target.value || '' }),
+      clear: () => this.setState({ filter: 'All', q: '' })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -45,6 +45,7 @@ Visual basics:
 
 - Coffee palette: latte background `#F5EDE3`, milk-foam cards `#FFFBF6`, espresso text `#2B1A12`, mocha `#6F4630` for the main action, caramel `#C98B4B` for streaks, matcha and cherry for right and wrong.
 - Pill-shaped 52px buttons and soft, rounded cards.
+- Source files for the prototype are in `design/` (17 phone screens at 390x844 and 9 desktop screens at 1280x800, `Desktop-*.dc.html`). Desktop uses a left sidebar instead of the bottom tab bar.
 - Fraunces for titles, Inter for reading and buttons.
 - Buttons 52 px tall with 14 px corners, touch targets at least 44 px.
 - Right and wrong answers always carry an icon and a word, never colour alone.

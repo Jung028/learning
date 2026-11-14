@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn generating</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:72px 20px 32px;gap:24px">
+
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#6F4630">{{kicker}}</div>
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:32px;line-height:38px">{{headline}}</h1>
+<p style="margin:0;font-size:16px;line-height:24px;color:#6F5A4C">Topic: Stoicism · Beginner · 5 chapters</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for list="{{steps}}" as="st" hint-placeholder-count="3">
+<div style="{{ st.rowStyle }}">
+<div style="{{ st.dotStyle }}">{{ st.mark }}</div>
+<div style="font-size:16px;font-weight:600;line-height:22px">{{ st.label }}</div>
+</div>
+</sc-for>
+</div>
+
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:16px;padding:14px 16px;font-size:14px;line-height:21px;color:#6F5A4C">Only the outline and the first chapters are written now. The rest are written as you go, so you can start reading sooner.</div>
+
+<div style="flex:1"></div>
+
+<sc-if value="{{done}}" hint-placeholder-val="{{ false }}">
+<a href="Outline.dc.html" style="height:52px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">See outline</a>
+</sc-if>
+<sc-if value="{{working}}" hint-placeholder-val="{{ true }}">
+<a href="Create.dc.html" style="height:52px;border-radius:999px;background:#EADBC8;color:#4A2E1E;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Cancel</a>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { n: 0 };
+  }
+  componentDidMount() {
+    this.timer = setInterval(() => {
+      if (this.state.n < 3) this.setState({ n: this.state.n + 1 });
+      else clearInterval(this.timer);
+    }, 1200);
+  }
+  componentWillUnmount() { if (this.timer) clearInterval(this.timer); }
+  renderVals() {
+    const n = this.state.n;
+    const labels = ['Reading your topic', 'Writing the chapter outline', 'Checking the outline makes sense'];
+    return {
+      done: n >= 3,
+      working: n < 3,
+      kicker: n >= 3 ? 'Ready' : 'Working',
+      headline: n >= 3 ? 'Your outline is ready' : 'Building your course…',
+      steps: labels.map((label, i) => {
+        const finished = n > i, active = n === i;
+        return {
+          label,
+          mark: finished ? '✓' : String(i + 1),
+          rowStyle: 'display:flex;align-items:center;gap:14px;background:' + (active ? '#EADBC8' : '#FFFBF6') + ';border:1px solid ' + (active ? '#6F4630' : '#E0D2C0') + ';border-radius:16px;padding:14px 16px',
+          dotStyle: 'width:32px;height:32px;border-radius:999px;font:600 14px Inter,system-ui,sans-serif;display:flex;align-items:center;justify-content:center;flex:none;background:' + (finished ? '#3F6B3A' : active ? '#6F4630' : '#E0D2C0') + ';color:' + (finished || active ? '#FFFBF6' : '#6F5A4C')
+        };
+      })
+    };
+  }
+}
+</script>
+</body>
+</html>

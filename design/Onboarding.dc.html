@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn welcome</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:56px 20px 32px;gap:24px">
+
+<div style="display:flex;align-items:center;justify-content:space-between">
+<a href="SignIn.dc.html" aria-label="Back to sign in" style="width:44px;height:44px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;display:flex;align-items:center;justify-content:center;text-decoration:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<a href="Home.dc.html" style="height:44px;padding:0 8px;color:#6F4630;font-size:16px;font-weight:600;display:flex;align-items:center;text-decoration:none">Skip</a>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:32px;line-height:38px">Set your daily goal</h1>
+<p style="margin:0;font-size:16px;line-height:24px;color:#6F5A4C">Small and steady beats long and rare. You can change this any time in Settings.</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<div style="font-size:14px;font-weight:600">Minutes a day</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<sc-for list="{{goals}}" as="g" hint-placeholder-count="4"><button type="button" onClick="{{ g.pick }}" aria-pressed="{{ g.on }}" style="{{ g.style }}">{{ g.label }}</button></sc-for>
+</div>
+</div>
+
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:4px 16px">
+<div style="min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:12px"><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:600">Daily reminder</div><div style="font-size:13px;color:#6F5A4C">{{reminderText}}</div></div>
+<button type="button" role="switch" aria-label="Daily reminder" aria-checked="{{reminder}}" onClick="{{toggleReminder}}" style="{{track}}"><span style="width:26px;height:26px;border-radius:999px;background:#FFFBF6;display:block"></span></button></div>
+</div>
+
+<div style="background:#EADBC8;border-radius:16px;padding:14px 16px;font-size:14px;line-height:21px;color:#2B1A12">Courses are written by Claude, an AI. It can make mistakes, so use the report button on any card you think is wrong.</div>
+
+<div style="flex:1"></div>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<a href="Create.dc.html" style="height:52px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Start my first module</a>
+<a href="Home.dc.html" style="height:52px;border-radius:999px;background:#EADBC8;color:#4A2E1E;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Take me home</a>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { goal: '10 min', reminder: true };
+  }
+  chip(on) {
+    return on
+      ? "height:44px;padding:0 18px;border:2px solid #6F4630;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 15px 'Inter',system-ui,sans-serif"
+      : "height:44px;padding:0 18px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;font:500 15px 'Inter',system-ui,sans-serif";
+  }
+  renderVals() {
+    const s = this.state;
+    return {
+      goals: ['5 min', '10 min', '15 min', '30 min'].map((label) => ({ label, on: s.goal === label, style: this.chip(s.goal === label), pick: () => this.setState({ goal: label }) })),
+      reminder: s.reminder,
+      reminderText: s.reminder ? 'Every day at 8:00 am' : 'Off',
+      track: 'width:52px;height:32px;border:0;border-radius:999px;padding:3px;box-sizing:border-box;display:flex;align-items:center;flex:none;justify-content:' + (s.reminder ? 'flex-end' : 'flex-start') + ';background:' + (s.reminder ? '#6F4630' : '#8F7B6C'),
+      toggleReminder: () => this.setState({ reminder: !this.state.reminder })
+    };
+  }
+}
+</script>
+</body>
+</html>

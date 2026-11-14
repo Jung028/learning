@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn memorise</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:52px 20px 28px;gap:16px">
+
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<a href="Module.dc.html" aria-label="Back to module" style="width:44px;height:44px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;display:flex;align-items:center;justify-content:center;text-decoration:none;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<div style="flex:1;text-align:center;font-size:13px;line-height:18px;font-weight:500;color:#6F5A4C">Memorise · Stoicism<br>{{counter}}</div>
+<div style="width:44px;flex:none"></div>
+</div>
+
+<div style="height:8px;border-radius:999px;background:#E0D2C0;overflow:hidden"><div style="{{barStyle}}"></div></div>
+
+<sc-if value="{{inDeck}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{flip}}" aria-label="Flip card" style="{{cardStyle}}">
+<div style="{{labelStyle}}">{{sideLabel}}</div>
+<div style="{{textStyle}}">{{cardText}}</div>
+<div style="font-size:13px;color:#6F5A4C">Tap the card to flip it</div>
+</button>
+
+<sc-if value="{{flipped}}" hint-placeholder-val="{{ false }}">
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+<button type="button" onClick="{{again}}" style="height:52px;border:0;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 16px 'Inter',system-ui,sans-serif">Again</button>
+<button type="button" onClick="{{gotIt}}" style="height:52px;border:0;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font:600 16px 'Inter',system-ui,sans-serif">Got it</button>
+</div>
+</sc-if>
+<sc-if value="{{notFlipped}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{flip}}" style="height:52px;border:0;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font:600 16px 'Inter',system-ui,sans-serif">Show answer</button>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{inSummary}}" hint-placeholder-val="{{ false }}">
+<div style="flex:1;background:#FFFBF6;border:1px solid #E0D2C0;border-radius:32px;box-shadow:0 4px 20px rgba(43,26,18,0.08);padding:28px;display:flex;flex-direction:column;justify-content:center;gap:12px">
+<div style="font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#6F4630">Deck finished</div>
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:56px;line-height:56px">{{known}} <span style="font-size:28px;color:#6F5A4C">of 5 on the first try</span></div>
+<p style="margin:0;font-size:16px;line-height:24px;color:#6F5A4C">Cards you marked “Again” come back tomorrow in your daily review.</p>
+</div>
+<a href="Discuss.dc.html" style="height:52px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Practise a presentation</a>
+<button type="button" onClick="{{restart}}" style="height:52px;border:0;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 16px 'Inter',system-ui,sans-serif">Go through the deck again</button>
+<a href="Module.dc.html" style="height:44px;color:#6F4630;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Back to module</a>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { i: 0, flipped: false, known: 0, finished: false, again: 0 };
+  }
+  deck() {
+    return [
+      { q: 'Where and when did Stoicism begin?', a: 'In Athens, around 300 BCE, taught by Zeno of Citium.' },
+      { q: 'Where does the word “Stoic” come from?', a: 'The Stoa Poikile, the painted porch where Zeno taught.' },
+      { q: 'What did Epictetus say is up to us?', a: 'Our opinions and our choices. Not the weather or what others think.' },
+      { q: 'What is the only true good for a Stoic?', a: 'Good character, also called virtue.' },
+      { q: 'What are Marcus Aurelius’s Meditations?', a: 'Private notes he wrote to himself to stay calm and fair.' }
+    ];
+  }
+  renderVals() {
+    const d = this.deck();
+    const s = this.state;
+    const card = d[Math.min(s.i, d.length - 1)];
+    const advance = (gotIt) => {
+      const nextI = this.state.i + 1;
+      this.setState({ known: this.state.known + (gotIt && !this.state.retried ? 1 : 0), i: nextI, flipped: false, finished: nextI >= d.length });
+    };
+    return {
+      inDeck: !s.finished,
+      inSummary: s.finished,
+      flipped: s.flipped,
+      notFlipped: !s.flipped,
+      known: s.known,
+      counter: s.finished ? 'Done' : 'Card ' + (s.i + 1) + ' of ' + d.length,
+      barStyle: 'height:8px;border-radius:999px;background:#6F4630;width:' + Math.round((s.finished ? 1 : s.i / d.length) * 100) + '%',
+      sideLabel: s.flipped ? 'Answer' : 'Question',
+      cardText: s.flipped ? card.a : card.q,
+      cardStyle: 'flex:1;min-height:0;box-sizing:border-box;border:1px solid ' + (s.flipped ? '#6F4630' : '#E0D2C0') + ';border-radius:32px;background:' + (s.flipped ? '#EADBC8' : '#FFFBF6') + ';padding:28px;display:flex;flex-direction:column;justify-content:center;align-items:flex-start;gap:16px;text-align:left;color:#2B1A12',
+      labelStyle: 'font:600 13px Inter,system-ui,sans-serif;letter-spacing:0.04em;text-transform:uppercase;color:#6F4630',
+      textStyle: 'font-family:Fraunces,Georgia,serif;font-weight:600;font-size:' + (s.flipped ? '26px' : '30px') + ';line-height:' + (s.flipped ? '34px' : '38px'),
+      flip: () => this.setState({ flipped: !this.state.flipped }),
+      gotIt: () => advance(true),
+      again: () => advance(false),
+      restart: () => this.setState({ i: 0, flipped: false, known: 0, finished: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

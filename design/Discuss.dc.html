@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn discussion</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:52px 20px 28px;gap:14px">
+
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<a href="Module.dc.html" aria-label="Back to module" style="width:44px;height:44px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;display:flex;align-items:center;justify-content:center;text-decoration:none;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<div style="flex:1;text-align:center;font-size:13px;line-height:18px;font-weight:500;color:#6F5A4C">Stoicism · Chapter 1<br>6:40 left in this session</div>
+<div style="width:44px;flex:none"></div>
+</div>
+
+<div style="display:flex;gap:10px">
+<sc-for list="{{modes}}" as="m" hint-placeholder-count="2">
+<button type="button" onClick="{{ m.pick }}" aria-pressed="{{ m.on }}" style="{{ m.style }}">{{ m.label }}</button>
+</sc-for>
+</div>
+
+<div style="flex:1;min-height:0;overflow:hidden;display:flex;flex-direction:column;gap:12px;justify-content:flex-end">
+<sc-for list="{{messages}}" as="msg" hint-placeholder-count="3">
+<div style="{{ msg.rowStyle }}"><div style="{{ msg.bubbleStyle }}">{{ msg.text }}</div></div>
+</sc-for>
+</div>
+
+<div style="display:flex;flex-direction:column;align-items:center;gap:10px">
+<div style="{{statusStyle}}">{{status}}</div>
+<button type="button" aria-label="Hold to speak" onMouseDown="{{start}}" onMouseUp="{{stop}}" onMouseLeave="{{stop}}" onTouchStart="{{touchStart}}" onTouchEnd="{{touchStop}}" onKeyDown="{{keyDown}}" onKeyUp="{{keyUp}}" style="{{micStyle}}">
+<svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg>
+</button>
+<div style="font-size:13px;color:#6F5A4C">Hold the button to talk. Press Space on a keyboard.</div>
+<a href="Module.dc.html" style="height:44px;color:#6F4630;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">End session</a>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.lastTouch = 0;
+    this.state = {
+      mode: 'Discuss',
+      holding: false,
+      turn: 0,
+      msgs: [
+        { who: 'claude', text: 'Epictetus split life into what is up to us and what is not. Where would you put your exam result?' }
+      ]
+    };
+  }
+  script() {
+    return [
+      { you: 'The result is not up to me, but how I study is.', claude: 'Exactly. So where should your effort go this week?' },
+      { you: 'Into a study plan, and not into worrying.', claude: 'That is the Stoic move: put effort where you have control. One more: what is one thing outside your control you worry about?' }
+    ];
+  }
+  begin() { if (!this.state.holding) this.setState({ holding: true }); }
+  end() {
+    if (!this.state.holding) return;
+    const s = this.script();
+    const t = this.state.turn;
+    if (t >= s.length) { this.setState({ holding: false }); return; }
+    this.setState({
+      holding: false,
+      turn: t + 1,
+      msgs: this.state.msgs.concat([{ who: 'you', text: s[t].you }, { who: 'claude', text: s[t].claude }])
+    });
+  }
+  renderVals() {
+    const s = this.state;
+    const modes = ['Discuss', 'Practise a presentation'];
+    const chip = (on) => on
+      ? "height:40px;padding:0 16px;border:2px solid #6F4630;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 14px 'Inter',system-ui,sans-serif"
+      : "height:40px;padding:0 16px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;font:500 14px 'Inter',system-ui,sans-serif";
+    return {
+      modes: modes.map((label) => ({ label, on: s.mode === label, style: chip(s.mode === label), pick: () => this.setState({ mode: label }) })),
+      messages: s.msgs.map((m) => ({
+        text: m.text,
+        rowStyle: 'display:flex;justify-content:' + (m.who === 'you' ? 'flex-end' : 'flex-start'),
+        bubbleStyle: m.who === 'you'
+          ? 'max-width:80%;padding:12px 14px;border-radius:18px 18px 4px 18px;background:#6F4630;color:#FFFBF6;font-size:16px;line-height:23px'
+          : 'max-width:85%;padding:12px 14px;border-radius:18px 18px 18px 4px;background:#FFFBF6;border:1px solid #E0D2C0;color:#2B1A12;font-size:16px;line-height:23px'
+      })),
+      status: s.holding ? 'Listening… release to send' : 'Hold to speak',
+      statusStyle: 'font-size:15px;font-weight:600;color:' + (s.holding ? '#6F4630' : '#2B1A12'),
+      micStyle: 'width:88px;height:88px;border-radius:999px;border:' + (s.holding ? '4px solid #EADBC8' : '0') + ';background:' + (s.holding ? '#4A2E1E' : '#6F4630') + ';color:#FFFBF6;display:flex;align-items:center;justify-content:center',
+      start: () => { if (Date.now() - this.lastTouch > 600) this.begin(); },
+      stop: () => { if (Date.now() - this.lastTouch > 600) this.end(); },
+      touchStart: () => { this.lastTouch = Date.now(); this.begin(); },
+      touchStop: () => { this.lastTouch = Date.now(); this.end(); },
+      keyDown: (e) => { if (e.key === ' ') { e.preventDefault(); this.begin(); } },
+      keyUp: (e) => { if (e.key === ' ') { e.preventDefault(); this.end(); } }
+    };
+  }
+}
+</script>
+</body>
+</html>

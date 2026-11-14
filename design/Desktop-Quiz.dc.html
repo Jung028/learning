@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn desktop quiz</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:1280px;height:800px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;overflow:hidden">
+<aside style="width:240px;flex:none;box-sizing:border-box;background:#FFFBF6;border-right:1px solid #E0D2C0;padding:28px 16px;display:flex;flex-direction:column;gap:24px">
+<a href="Desktop-Home.dc.html" style="display:flex;align-items:center;gap:10px;text-decoration:none;color:#2B1A12;padding:0 6px"><div style="width:36px;height:36px;border-radius:12px;background:#6F4630;color:#FFFBF6;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h12v5a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h1.5a2.5 2.5 0 0 1 0 5H16"/></svg></div><span style="font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:20px">SwipeLearn</span></a>
+<a href="Desktop-Create.dc.html" style="height:48px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font-size:15px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>New module</a>
+<nav aria-label="Main" style="display:flex;flex-direction:column;gap:4px"><a href="Desktop-Home.dc.html" style="display:flex;align-items:center;gap:12px;height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:600;color:#4A2E1E;background:#EADBC8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg>Home</a><a href="Desktop-Library.dc.html" style="display:flex;align-items:center;gap:12px;height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:500;color:#6F5A4C;background:transparent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M5 4h6v16H5zM13 4h6v16h-6z"/></svg>Library</a><a href="Desktop-Stash.dc.html" style="display:flex;align-items:center;gap:12px;height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:500;color:#6F5A4C;background:transparent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M7 4h10v16l-5-4-5 4z"/></svg>Stash</a><a href="Desktop-Settings.dc.html" style="display:flex;align-items:center;gap:12px;height:44px;padding:0 14px;border-radius:999px;text-decoration:none;font-size:15px;font-weight:500;color:#6F5A4C;background:transparent"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c1-4 4-6 8-6s7 2 8 6"/></svg>Settings</a></nav>
+<div style="flex:1"></div>
+<a href="Desktop-Home.dc.html" style="display:flex;align-items:center;gap:6px;height:36px;padding:0 14px;border-radius:999px;background:#C98B4B;color:#2B1A12;font-size:14px;font-weight:600;text-decoration:none;align-self:flex-start"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round" aria-hidden="true"><path d="M12 3c1 4 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg>4 days</a>
+</aside>
+<main style="flex:1;min-width:0;height:800px;box-sizing:border-box;overflow:hidden;padding:48px 56px">
+<div style="max-width:760px;display:flex;flex-direction:column;gap:24px">
+<div style="display:flex;align-items:center;justify-content:space-between"><a href="Desktop-Reader.dc.html" style="display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:600;color:#6F4630;text-decoration:none"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>Back to cards</a><div style="font-size:14px;color:#6F5A4C">{{count}}</div></div>
+<div style="height:8px;border-radius:999px;background:#E0D2C0;overflow:hidden"><div style="{{barStyle}}"></div></div>
+<sc-if value="{{isQuiz}}" hint-placeholder-val="{{ true }}">
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:34px;line-height:42px">{{cur.q}}</h1>
+<div style="display:flex;flex-direction:column;gap:12px">
+<sc-for each="{{opts}}" as="o"><button type="button" onClick="{{o.pick}}" style="{{o.st}}"><span>{{o.t}}</span><span style="font-size:14px;font-weight:600">{{o.mark}}</span></button></sc-for>
+</div>
+<sc-if value="{{answered}}" hint-placeholder-val="{{ false }}"><div><button type="button" onClick="{{next}}" style="height:52px;padding:0 28px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font:600 16px 'Inter',system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:0">{{nextLabel}}</button></div></sc-if>
+</sc-if>
+<sc-if value="{{isDone}}" hint-placeholder-val="{{ false }}">
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);border-radius:32px;padding:48px;display:flex;flex-direction:column;gap:16px">
+<div style="font-size:14px;font-weight:600;color:#6F4630;letter-spacing:0.04em;text-transform:uppercase">Chapter 1 results</div>
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:56px;line-height:62px">{{scoreText}}</h1>
+<div style="font-size:18px;color:#6F5A4C">{{msg}}</div>
+<div style="display:flex;gap:12px;margin-top:8px"><a href="Desktop-Module.dc.html" style="height:52px;padding:0 28px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font:600 16px 'Inter',system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:0">Back to module</a><button type="button" onClick="{{retry}}" style="height:52px;padding:0 28px;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 16px 'Inter',system-ui,sans-serif;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;border:0">Retry quiz</button></div>
+</div></sc-if></div>
+</main>
+</div>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":800}}'>
+class Component extends DCLogic {
+  constructor(props) { super(props); this.state = { q: 0, picked: -1, score: 0 }; }
+  qs() {
+    return [
+      { q: 'Where did the word “Stoic” come from?', o: ['A Greek city', 'A painted porch', 'A famous teacher', 'A type of exercise'], a: 1 },
+      { q: 'What did Epictetus say to focus on?', o: ['What other people think', 'The weather', 'Your own choices and opinions', 'Money'], a: 2 },
+      { q: 'What is the true good for Stoics?', o: ['Fame', 'Good character', 'Comfort', 'Power'], a: 1 },
+      { q: 'Who was a former slave who taught in Greece?', o: ['Seneca', 'Zeno', 'Marcus Aurelius', 'Epictetus'], a: 3 },
+      { q: 'Who were the Meditations written for?', o: ['The public', 'His soldiers', 'Himself', 'His students'], a: 2 }
+    ];
+  }
+  renderVals() {
+    const qs = this.qs(); const { q, picked, score } = this.state; const done = q >= qs.length; const cur = done ? qs[qs.length - 1] : qs[q];
+    const answered = picked >= 0;
+    const opts = cur.o.map((t, i) => {
+      let st = 'background:#FFFBF6;border:1px solid #E0D2C0;color:#2B1A12';
+      let mark = '';
+      if (answered && i === cur.a) { st = 'background:#E5EFDD;border:1px solid #3F6B3A;color:#3F6B3A'; mark = 'Correct'; }
+      else if (answered && i === picked) { st = 'background:#F8E3DD;border:1px solid #A23B2A;color:#A23B2A'; mark = 'Not quite'; }
+      return { t, mark, st: 'width:100%;text-align:left;min-height:56px;padding:0 24px;border-radius:16px;display:flex;align-items:center;justify-content:space-between;font:500 17px Inter,system-ui,sans-serif;' + st, pick: () => { if (this.state.picked < 0) this.setState({ picked: i, score: this.state.score + (i === cur.a ? 1 : 0) }); } };
+    });
+    return {
+      isQuiz: !done, isDone: done, cur, opts, answered,
+      count: 'Question ' + Math.min(q + 1, qs.length) + ' of ' + qs.length,
+      barStyle: 'height:8px;border-radius:999px;background:#6F4630;width:' + Math.round(((done ? qs.length : q + (answered ? 1 : 0)) / qs.length) * 100) + '%',
+      nextLabel: q === qs.length - 1 ? 'See results' : 'Next question',
+      scoreText: score + ' out of ' + qs.length,
+      msg: score >= 4 ? 'Strong work. Chapter 2 is ready.' : 'Good start. Read the cards again, then retry.',
+      next: () => this.setState({ q: this.state.q + 1, picked: -1 }),
+      retry: () => this.setState({ q: 0, picked: -1, score: 0 })
+    };
+  }
+}
+</script></x-dc>
+</body>
+</html>

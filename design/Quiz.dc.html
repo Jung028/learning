@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn chapter quiz</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:56px 20px 28px;gap:16px">
+
+<sc-if value="{{inQuiz}}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;align-items:center;justify-content:space-between;gap:12px">
+<a href="Reader.dc.html" aria-label="Back to the cards" style="width:44px;height:44px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;display:flex;align-items:center;justify-content:center;text-decoration:none;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<div style="flex:1;text-align:center;font-size:13px;line-height:18px;font-weight:500;color:#6F5A4C">Chapter 1 quiz<br>Question {{num}} of {{total}}</div>
+<div style="width:44px;flex:none"></div>
+</div>
+<div style="height:8px;border-radius:999px;background:#E0D2C0;overflow:hidden"><div style="{{barStyle}}"></div></div>
+
+<h1 style="margin:8px 0 0;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:28px;line-height:34px">{{q.stem}}</h1>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<sc-for list="{{options}}" as="o" hint-placeholder-count="4">
+<button type="button" onClick="{{ o.pick }}" style="{{ o.style }}">
+<sc-if value="{{ o.showLetter }}" hint-placeholder-val="{{ true }}"><span style="{{ o.badge }}">{{ o.letter }}</span></sc-if>
+<sc-if value="{{ o.showTick }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></sc-if>
+<sc-if value="{{ o.showCross }}" hint-placeholder-val="{{ false }}"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="flex:none"><path d="M7 7l10 10M17 7L7 17"/></svg></sc-if>
+<span style="flex:1;text-align:left">{{ o.text }}</span>
+</button>
+</sc-for>
+</div>
+
+<sc-if value="{{answered}}" hint-placeholder-val="{{ false }}">
+<div style="{{feedbackStyle}}">
+<div style="font-size:16px;font-weight:600">{{feedbackTitle}}</div>
+<div style="font-size:15px;line-height:22px;color:#2B1A12">{{q.why}}</div>
+</div>
+</sc-if>
+
+<div style="flex:1"></div>
+
+<sc-if value="{{answered}}" hint-placeholder-val="{{ false }}">
+<button type="button" onClick="{{advance}}" style="height:52px;border:0;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font:600 16px 'Inter',system-ui,sans-serif">{{advanceLabel}}</button>
+</sc-if>
+</sc-if>
+
+<sc-if value="{{inResults}}" hint-placeholder-val="{{ false }}">
+<div style="height:44px"></div>
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:13px;font-weight:600;letter-spacing:0.04em;text-transform:uppercase;color:#6F4630">Chapter 1 quiz</div>
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:64px;line-height:64px">{{score}} <span style="font-size:32px;color:#6F5A4C">of {{total}}</span></div>
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:24px;line-height:30px">{{resultTitle}}</h1>
+</div>
+
+<sc-if value="{{hasMissed}}" hint-placeholder-val="{{ true }}">
+<div style="display:flex;flex-direction:column;gap:8px">
+<div style="font-size:14px;font-weight:600">Missed</div>
+<sc-for list="{{missedList}}" as="m" hint-placeholder-count="2">
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:14px;padding:12px 14px;display:flex;flex-direction:column;gap:2px"><div style="font-size:15px;font-weight:600;line-height:20px">{{m.stem}}</div><div style="font-size:14px;color:#3F6B3A;font-weight:600">{{m.answer}}</div></div>
+</sc-for>
+</div>
+</sc-if>
+
+<sc-if value="{{perfect}}" hint-placeholder-val="{{ false }}">
+<div style="background:#E5EFDD;border:1px solid #3F6B3A;border-radius:14px;padding:14px 16px;font-size:15px;line-height:22px;color:#3F6B3A;font-weight:600">You answered every question correctly.</div>
+</sc-if>
+
+<div style="flex:1"></div>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<a href="Reader.dc.html" style="height:52px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Next chapter</a>
+<sc-if value="{{hasMissed}}" hint-placeholder-val="{{ true }}">
+<button type="button" onClick="{{retry}}" style="height:52px;border:0;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 16px 'Inter',system-ui,sans-serif">Retry missed questions</button>
+</sc-if>
+<a href="Reader.dc.html" style="height:52px;border-radius:999px;background:#EADBC8;color:#4A2E1E;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Review cards</a>
+<a href="Home.dc.html" style="height:44px;color:#6F4630;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Done</a>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { order: [0, 1, 2, 3, 4], pos: 0, picked: null, score: 0, missed: [], finished: false };
+  }
+  questions() {
+    return [
+      { stem: 'Where did Stoicism begin?', options: ['Rome', 'Athens', 'Alexandria', 'Sparta'], correct: 1, why: 'Zeno of Citium began teaching in Athens around 300 BCE.' },
+      { stem: 'The word “Stoic” comes from what?', options: ['A famous battle', 'A Greek word for calm', 'A painted porch', 'The founder’s nickname'], correct: 2, why: 'Zeno taught beneath the Stoa Poikile, the painted porch.' },
+      { stem: 'According to Epictetus, what is up to us?', options: ['Our reputation', 'Our opinions and choices', 'The weather', 'What others think'], correct: 1, why: 'Opinions and choices are ours. Reputation and weather are not.' },
+      { stem: 'What did Stoics see as the only true good?', options: ['Good character', 'Wealth', 'Fame', 'Comfort'], correct: 0, why: 'Virtue, or good character, is the only true good for a Stoic.' },
+      { stem: 'What were Marcus Aurelius’s Meditations?', options: ['A public speech', 'A school textbook', 'Letters to Seneca', 'Private notes to himself'], correct: 3, why: 'He wrote them as reminders for himself, not for readers.' }
+    ];
+  }
+  renderVals() {
+    const qs = this.questions();
+    const s = this.state;
+    const total = s.order.length;
+    const qi = s.order[Math.min(s.pos, total - 1)];
+    const q = qs[qi];
+    const answered = s.picked !== null;
+    const isRight = answered && s.picked === q.correct;
+    const letters = ['A', 'B', 'C', 'D'];
+    const options = q.options.map((text, idx) => {
+      let border = '1px solid #E0D2C0', bg = '#FFFBF6', color = '#2B1A12', weight = 400;
+      let badge = 'width:28px;height:28px;border-radius:999px;background:#EADBC8;color:#4A2E1E;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none';
+      let showLetter = true, showTick = false, showCross = false;
+      if (answered && idx === q.correct) { border = '2px solid #3F6B3A'; bg = '#E5EFDD'; color = '#3F6B3A'; weight = 600; showLetter = false; showTick = true; }
+      else if (answered && idx === s.picked) { border = '2px solid #A23B2A'; bg = '#F8E3DD'; color = '#A23B2A'; weight = 600; showLetter = false; showCross = true; }
+      return {
+        text, letter: letters[idx], badge, showLetter, showTick, showCross,
+        style: 'min-height:56px;box-sizing:border-box;padding:12px 16px;border:' + border + ';border-radius:14px;background:' + bg + ';color:' + color + ';display:flex;align-items:center;gap:12px;font:' + weight + ' 16px/22px Inter,system-ui,sans-serif',
+        pick: () => { if (this.state.picked === null) this.setState({ picked: idx, score: this.state.score + (idx === q.correct ? 1 : 0), missed: idx === q.correct ? this.state.missed : this.state.missed.concat([qi]) }); }
+      };
+    });
+    const last = s.pos >= total - 1;
+    return {
+      inQuiz: !s.finished,
+      inResults: s.finished,
+      q, options, answered, total,
+      num: s.pos + 1,
+      barStyle: 'height:8px;border-radius:999px;background:#6F4630;width:' + Math.round(((s.pos + (answered ? 1 : 0)) / total) * 100) + '%',
+      feedbackTitle: isRight ? 'Correct' : 'Not quite',
+      feedbackStyle: 'border-radius:14px;padding:14px 16px;display:flex;flex-direction:column;gap:4px;background:' + (isRight ? '#E5EFDD' : '#F8E3DD') + ';border:1px solid ' + (isRight ? '#3F6B3A' : '#A23B2A'),
+      advanceLabel: last ? 'See results' : 'Next question',
+      advance: () => { if (last) this.setState({ finished: true }); else this.setState({ pos: this.state.pos + 1, picked: null }); },
+      score: s.score,
+      resultTitle: s.score >= Math.ceil(total * 0.6) ? 'Nicely done. Next chapter unlocked.' : 'Worth another look before moving on.',
+      hasMissed: s.missed.length > 0,
+      perfect: s.missed.length === 0,
+      missedList: s.missed.map((i) => ({ stem: qs[i].stem, answer: qs[i].options[qs[i].correct] })),
+      retry: () => this.setState({ order: this.state.missed.slice(), pos: 0, picked: null, score: 0, missed: [], finished: false })
+    };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn design system</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}a:hover{color:#4A2E1E}
+</style>
+</helmet>
+<div style="width:1400px;box-sizing:border-box;padding:64px;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;gap:64px">
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-size:13px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#6F4630">SwipeLearn · working name</div>
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:56px;line-height:1.05">Design system</h1>
+<p style="margin:0;font-size:18px;line-height:28px;color:#6F5A4C;max-width:760px">One set of colours, type, shapes and buttons used on every screen. Warm latte background, one mocha action colour with caramel for streaks, a serif for titles and a clean sans for reading. Pill-shaped buttons and soft, rounded cards. Every button below says where it leads.</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:24px">
+<h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:32px">1. Colour</h2>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#F5EDE3;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Latte</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#F5EDE3 · app background, like steamed milk on a latte</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#FFFBF6;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Milk foam</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#FFFBF6 · cards, sheets, inputs</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#2B1A12;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Espresso</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#2B1A12 · titles and body text</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#6F5A4C;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Muted</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#6F5A4C · captions, hints (6:1 on paper)</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#6F4630;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Mocha (primary)</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#6F4630 · main buttons, links, progress (white text, 7.5:1)</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#EADBC8;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Cappuccino</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#EADBC8 · secondary buttons, selected chips</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#C98B4B;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Caramel</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#C98B4B · streak badge only, always with ink text</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#E0D2C0;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Crema line</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#E0D2C0 · borders, dividers, empty progress</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#3F6B3A;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Matcha (correct)</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#3F6B3A on #E5EFDD · right answers</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#E5EFDD;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Matcha soft</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#E5EFDD · right-answer background</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#A23B2A;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Cherry (wrong)</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#A23B2A on #F8E3DD · wrong answers, errors</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:88px;border-radius:12px;background:#F8E3DD;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Cherry soft</div><div style="font-size:13px;line-height:18px;color:#6F5A4C">#F8E3DD · wrong-answer background</div></div>
+</div>
+<p style="margin:0;font-size:14px;line-height:22px;color:#6F5A4C">Right and wrong are never shown by colour alone: they also carry a tick or cross icon and the words “Correct” or “Not quite”. Dark mode is a later step.</p>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:24px">
+<h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:32px">2. Fonts</h2>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px">
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;color:#6F5A4C">Display · Fraunces 700 · 32/38</div><div style="font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:32px;line-height:38px">Where Stoicism began</div><div style="font-size:13px;color:#6F5A4C">Module and chapter titles, score numbers</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;color:#6F5A4C">Card title · Fraunces 600 · 28/34</div><div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:28px;line-height:34px">Control what you can</div><div style="font-size:13px;color:#6F5A4C">Title on each swipe card</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;color:#6F5A4C">Reading · Inter 400 · 20/30</div><div style="font-size:20px;line-height:30px">Some things are up to us, like our opinions and choices.</div><div style="font-size:13px;color:#6F5A4C">Card body, max 45 words, large for one-hand reading</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;color:#6F5A4C">Body · Inter 400 · 16/24</div><div style="font-size:16px;line-height:24px">Pick a level and how many chapters you want.</div><div style="font-size:13px;color:#6F5A4C">Descriptions, answers, explanations</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;color:#6F5A4C">Button and label · Inter 600 · 16/20</div><div style="font-size:16px;line-height:20px;font-weight:600">Start chapter 1</div><div style="font-size:13px;color:#6F5A4C">Every button, tab and chip</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:6px"><div style="font-size:13px;color:#6F5A4C">Caption · Inter 500 · 13/18</div><div style="font-size:13px;line-height:18px;font-weight:500">Card 2 of 5 · 6 min left</div><div style="font-size:13px;color:#6F5A4C">Counters, hints, tab labels</div></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:24px">
+<h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:32px">3. Shape and spacing</h2>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px">
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28)"></div><div style="font-weight:600;font-size:15px">Buttons and inputs</div><div style="font-size:13px;color:#6F5A4C">Pill shape · height 52</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:24px;background:#FFFBF6;border:1px solid #E0D2C0"></div><div style="font-weight:600;font-size:15px">Cards</div><div style="font-size:13px;color:#6F5A4C">Radius 24 · swipe card 32</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:72px;border-radius:999px;background:#EADBC8"></div><div style="font-weight:600;font-size:15px">Chips and badges</div><div style="font-size:13px;color:#6F5A4C">Fully round · height 40</div></div>
+<div style="display:flex;flex-direction:column;gap:8px"><div style="display:flex;align-items:flex-end;gap:6px;height:72px"><div style="width:4px;height:4px;background:#6F4630"></div><div style="width:8px;height:8px;background:#6F4630"></div><div style="width:12px;height:12px;background:#6F4630"></div><div style="width:16px;height:16px;background:#6F4630"></div><div style="width:24px;height:24px;background:#6F4630"></div><div style="width:32px;height:32px;background:#6F4630"></div></div><div style="font-weight:600;font-size:15px">Spacing scale</div><div style="font-size:13px;color:#6F5A4C">4 · 8 · 12 · 16 · 24 · 32. Screen margin 20. Touch targets at least 44.</div></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:24px">
+<h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:32px">4. Buttons and controls</h2>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px">
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:16px"><div style="font-weight:600;font-size:15px">Mocha (primary)</div><button type="button" style="height:52px;border:0;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font:600 16px 'Inter',system-ui,sans-serif">New module</button><div style="font-size:13px;line-height:19px;color:#6F5A4C">One per screen. The next step forward: New module, Generate outline, Start chapter 1, Take quiz, Next chapter.</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:16px"><div style="font-weight:600;font-size:15px">Secondary</div><button type="button" style="height:52px;border:0;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 16px 'Inter',system-ui,sans-serif">Review cards</button><div style="font-size:13px;line-height:19px;color:#6F5A4C">A useful side step: Review cards, Retry missed questions, Regenerate outline.</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:16px"><div style="font-weight:600;font-size:15px">Text button</div><button type="button" style="height:52px;border:0;border-radius:999px;background:transparent;color:#6F4630;font:600 16px 'Inter',system-ui,sans-serif">Done</button><div style="font-size:13px;line-height:19px;color:#6F5A4C">Leaves a flow without a new action: Done, Skip, Cancel.</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:16px"><div style="font-weight:600;font-size:15px">Icon button · 44 × 44</div><div style="display:flex;gap:12px"><button type="button" aria-label="Close" style="width:44px;height:44px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button><button type="button" aria-label="Save card" style="width:44px;height:44px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-4-5 4z"/></svg></button><button type="button" aria-label="Back" style="width:44px;height:44px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;display:flex;align-items:center;justify-content:center"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button></div><div style="font-size:13px;line-height:19px;color:#6F5A4C">Close, Save card, Back. Always have an accessible label.</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:16px"><div style="font-weight:600;font-size:15px">Chip: off and selected</div><div style="display:flex;gap:12px"><button type="button" style="height:40px;padding:0 16px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;font:500 15px 'Inter',system-ui,sans-serif">Beginner</button><button type="button" style="height:40px;padding:0 16px;border:2px solid #6F4630;border-radius:999px;background:#EADBC8;color:#4A2E1E;font:600 15px 'Inter',system-ui,sans-serif">Intermediate</button></div><div style="font-size:13px;line-height:19px;color:#6F5A4C">Pick one option, stay on the screen: level and number of chapters.</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:16px"><div style="font-weight:600;font-size:15px">Ask Claude pill</div><button type="button" style="height:44px;padding:0 18px;border:0;border-radius:999px;background:#2B1A12;color:#FFFBF6;font:600 15px 'Inter',system-ui,sans-serif;align-self:flex-start">Ask Claude</button><div style="font-size:13px;line-height:19px;color:#6F5A4C">Opens a bottom sheet over the card: Explain simpler, Give an example, Ask a question.</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:16px"><div style="font-weight:600;font-size:15px">Danger button</div><button type="button" style="height:52px;border:1px solid #A23B2A;border-radius:999px;background:#FFFBF6;color:#A23B2A;font:600 16px 'Inter',system-ui,sans-serif">Delete account</button><div style="font-size:13px;line-height:19px;color:#6F5A4C">Only for actions that cannot be undone. Always opens a confirm sheet first.</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:16px"><div style="font-weight:600;font-size:15px">Toggle switch: on and off</div><div style="display:flex;gap:16px"><button type="button" role="switch" aria-checked="true" aria-label="On" style="width:52px;height:32px;border:0;border-radius:999px;padding:3px;box-sizing:border-box;display:flex;align-items:center;justify-content:flex-end;background:#6F4630"><span style="width:26px;height:26px;border-radius:999px;background:#FFFBF6;display:block"></span></button><button type="button" role="switch" aria-checked="false" aria-label="Off" style="width:52px;height:32px;border:0;border-radius:999px;padding:3px;box-sizing:border-box;display:flex;align-items:center;justify-content:flex-start;background:#8F7B6C"><span style="width:26px;height:26px;border-radius:999px;background:#FFFBF6;display:block"></span></button></div><div style="font-size:13px;line-height:19px;color:#6F5A4C">Instant settings: daily reminder, live discussions. Changes apply at once, no save button.</div></div>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:24px;display:flex;flex-direction:column;gap:16px"><div style="font-weight:600;font-size:15px">Hold to speak</div><div style="display:flex;gap:16px;align-items:center"><button type="button" aria-label="Hold to speak" style="width:72px;height:72px;border:0;border-radius:999px;background:#6F4630;color:#FFFBF6;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button><button type="button" aria-label="Listening" style="width:72px;height:72px;border:4px solid #EADBC8;border-radius:999px;background:#4A2E1E;color:#FFFBF6;display:flex;align-items:center;justify-content:center"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button></div><div style="font-size:13px;line-height:19px;color:#6F5A4C">Idle and held. Press and hold to talk, release to send. Space bar works too. Sessions are capped at 10 minutes.</div></div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-weight:600;font-size:15px">Quiz answer options: four states</div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px">
+<div style="min-height:56px;box-sizing:border-box;padding:12px 16px;border:1px solid #E0D2C0;border-radius:14px;background:#FFFBF6;display:flex;align-items:center;gap:12px;font-size:16px;line-height:22px"><span style="width:28px;height:28px;border-radius:999px;background:#EADBC8;color:#4A2E1E;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">A</span>Default</div>
+<div style="min-height:56px;box-sizing:border-box;padding:12px 16px;border:2px solid #6F4630;border-radius:14px;background:#EADBC8;display:flex;align-items:center;gap:12px;font-size:16px;line-height:22px;font-weight:600"><span style="width:28px;height:28px;border-radius:999px;background:#6F4630;color:#FFFBF6;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">B</span>Pressed</div>
+<div style="min-height:56px;box-sizing:border-box;padding:12px 16px;border:2px solid #3F6B3A;border-radius:14px;background:#E5EFDD;color:#3F6B3A;display:flex;align-items:center;gap:12px;font-size:16px;line-height:22px;font-weight:600"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Matcha (correct)</div>
+<div style="min-height:56px;box-sizing:border-box;padding:12px 16px;border:2px solid #A23B2A;border-radius:14px;background:#F8E3DD;color:#A23B2A;display:flex;align-items:center;gap:12px;font-size:16px;line-height:22px;font-weight:600"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true" style="flex:none"><path d="M7 7l10 10M17 7L7 17"/></svg>Not quite</div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-weight:600;font-size:15px">Chapter rows on the Module page: open, next up, locked</div>
+<div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px">
+<div style="min-height:56px;box-sizing:border-box;background:#FFFBF6;border:2px solid #6F4630;border-radius:16px;padding:8px 14px;display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:999px;background:#6F4630;color:#FFFBF6;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">1</div><div style="display:flex;flex-direction:column"><div style="font-size:15px;font-weight:600">Open</div><div style="font-size:13px;color:#6F5A4C">Tap to read</div></div></div>
+<div style="min-height:56px;box-sizing:border-box;background:#EADBC8;border:1px solid #E0D2C0;border-radius:16px;padding:8px 14px;display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:999px;background:#FFFBF6;color:#4A2E1E;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">2</div><div style="display:flex;flex-direction:column"><div style="font-size:15px;font-weight:600">Next up</div><div style="font-size:13px;color:#4A2E1E">Opens after quiz</div></div></div>
+<div style="min-height:56px;box-sizing:border-box;background:#EFE6DA;border:1px solid #E0D2C0;border-radius:16px;padding:8px 14px;display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:999px;background:#E0D2C0;color:#6F5A4C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><div style="display:flex;flex-direction:column"><div style="font-size:15px;font-weight:600;color:#6F5A4C">Locked</div><div style="font-size:13px;color:#6F5A4C">Not tappable</div></div></div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:12px">
+<div style="font-weight:600;font-size:15px">Progress bar and bottom tab bar</div>
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-items:center">
+<div style="display:flex;flex-direction:column;gap:8px"><div style="height:8px;border-radius:999px;background:#E0D2C0;overflow:hidden"><div style="width:60%;height:8px;border-radius:999px;background:#6F4630"></div></div><div style="font-size:13px;color:#6F5A4C">Card 3 of 5. Fills as you swipe. Same bar shows module progress on Home.</div></div>
+<div style="display:grid;grid-template-columns:repeat(4,minmax(0,1fr));background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:8px"><div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;color:#6F4630;font-size:12px;font-weight:600"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M4 11l8-7 8 7v9H4z"/></svg>Home</div><div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;color:#6F5A4C;font-size:12px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h6v16H5zM13 4h6v16h-6z"/></svg>Library</div><div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;color:#6F5A4C;font-size:12px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v16l-5-4-5 4z"/></svg>Stash</div><div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:8px 0;color:#6F5A4C;font-size:12px;font-weight:500"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M5 20c1-4 13-4 14 0"/></svg>You</div></div>
+</div>
+</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:24px">
+<h2 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:32px">5. Where every button leads</h2>
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);overflow:hidden">
+<div style="display:grid;grid-template-columns:160px 300px minmax(0,1fr);gap:16px;padding:14px 24px;background:#EADBC8;color:#4A2E1E;font-size:13px;font-weight:600"><div>Screen</div><div>Button or gesture</div><div>Leads to</div></div>
+<sc-for list="{{rows}}" as="r" hint-placeholder-count="3">
+<div style="display:grid;grid-template-columns:160px 300px minmax(0,1fr);gap:16px;padding:12px 24px;border-top:1px solid #E0D2C0;font-size:15px;line-height:22px"><div style="color:#6F5A4C">{{r.screen}}</div><div style="font-weight:600">{{r.button}}</div><div>{{r.leads}}</div></div>
+</sc-for>
+</div>
+<p style="margin:0;font-size:14px;line-height:22px;color:#6F5A4C">Every button on every screen leads somewhere or responds on the spot. The specimens on this board are static examples. Chapter 2 onward reuses the reader and quiz screens.</p>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1400,"height":5400}}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      rows: [
+        { screen: 'Home', button: 'Continue card', leads: 'Reader, at the exact card you stopped on' },
+        { screen: 'Home', button: 'New module', leads: 'New module screen' },
+        { screen: 'Home', button: 'A module in your list', leads: 'Module page' },
+        { screen: 'Home', button: 'You tab', leads: 'Settings' },
+        { screen: 'Home', button: 'Library tab', leads: 'Library' },
+        { screen: 'Home', button: 'Stash tab', leads: 'Stash' },
+        { screen: 'Every main screen', button: 'Bottom tabs: Home, Library, Stash, You', leads: 'Home, Library, Stash, Settings' },
+        { screen: 'New module', button: 'Close (X)', leads: 'Home, nothing saved' },
+        { screen: 'New module', button: 'Level and chapter-count chips', leads: 'Selects the option, stays on the screen' },
+        { screen: 'New module', button: 'Generate outline', leads: 'Generating screen, which then opens Outline' },
+        { screen: 'Outline', button: 'Back arrow', leads: 'New module screen, topic kept' },
+        { screen: 'Outline', button: 'Remove (X) on a chapter', leads: 'Takes the chapter out of the list, stays on the screen' },
+        { screen: 'Outline', button: 'Regenerate outline', leads: 'Outline screen with a fresh version' },
+        { screen: 'Outline', button: 'Start chapter 1', leads: 'Reader, card 1' },
+        { screen: 'Reader', button: 'Close (X)', leads: 'Home, progress saved' },
+        { screen: 'Reader', button: 'Swipe up, or next arrow', leads: 'Next card' },
+        { screen: 'Reader', button: 'Swipe down, or previous arrow', leads: 'Previous card' },
+        { screen: 'Reader', button: 'Save card (bookmark)', leads: 'Adds or removes the card in Stash, stays on the card' },
+        { screen: 'Reader', button: 'Ask Claude', leads: 'Bottom sheet: Explain simpler, Give an example, Ask a question' },
+        { screen: 'Reader', button: 'Take quiz (last card)', leads: 'Quiz, question 1 of 5' },
+        { screen: 'Quiz', button: 'Answer option', leads: 'Locks the answer, shows right or wrong and a one-line reason' },
+        { screen: 'Quiz', button: 'Next question / See results', leads: 'Next question, or the results screen after question 5' },
+        { screen: 'Results', button: 'Next chapter', leads: 'Reader, first card of the next chapter' },
+        { screen: 'Results', button: 'Retry missed questions', leads: 'Quiz with only the questions you missed' },
+        { screen: 'Results', button: 'Review cards', leads: 'Reader, card 1 of this chapter' },
+        { screen: 'Results', button: 'Done', leads: 'Home' },
+        { screen: 'Module', button: 'Back arrow', leads: 'Home' },
+        { screen: 'Module', button: 'Continue chapter 1', leads: 'Reader, where you stopped' },
+        { screen: 'Module', button: 'Open chapter row', leads: 'Reader for that chapter' },
+        { screen: 'Module', button: 'Next-up and locked rows', leads: 'Explains why it is not open yet, stays on the page' },
+        { screen: 'Module', button: 'Discuss', leads: 'Discussion with Claude' },
+        { screen: 'Module', button: 'Memorise', leads: 'Flashcards for this module' },
+        { screen: 'Discussion', button: 'Discuss or Practise a presentation chips', leads: 'Switches the mode, stays on the screen' },
+        { screen: 'Discussion', button: 'Hold to speak', leads: 'While held: listening. On release: your answer is sent and Claude replies' },
+        { screen: 'Discussion', button: 'End session', leads: 'Module page' },
+        { screen: 'Discussion', button: 'Back arrow', leads: 'Module page' },
+        { screen: 'Memorise', button: 'Show answer, or tap the card', leads: 'Flips the card' },
+        { screen: 'Memorise', button: 'Got it / Again', leads: 'Next card. Again cards return in tomorrow’s review' },
+        { screen: 'Memorise', button: 'Practise a presentation', leads: 'Discussion in presentation mode' },
+        { screen: 'Memorise', button: 'Back to module', leads: 'Module page' },
+        { screen: 'Settings', button: 'Level, length and text-size chips', leads: 'Selects the option, applies at once' },
+        { screen: 'Settings', button: 'Reminder and voice switches', leads: 'Turns on or off at once' },
+        { screen: 'Settings', button: 'Export my data', leads: 'Shows “we’ll email you a link”' },
+        { screen: 'Settings', button: 'Account card (Free plan)', leads: 'Upgrade' },
+        { screen: 'Settings', button: 'Sign out', leads: 'Sign in' },
+        { screen: 'Settings', button: 'Delete account', leads: 'Confirm sheet' },
+        { screen: 'Settings', button: 'Yes, delete everything / Cancel', leads: 'Sign in, or closes the sheet' },
+        { screen: 'Sign in', button: 'Continue with Apple / Google / Send me a sign-in link', leads: 'Welcome' },
+        { screen: 'Welcome', button: 'Back arrow', leads: 'Sign in' },
+        { screen: 'Welcome', button: 'Skip / Take me home', leads: 'Home' },
+        { screen: 'Welcome', button: 'Minutes-a-day chips and reminder switch', leads: 'Select or toggle, stay on the screen' },
+        { screen: 'Welcome', button: 'Start my first module', leads: 'New module' },
+        { screen: 'Generating', button: 'Cancel (while working)', leads: 'New module' },
+        { screen: 'Generating', button: 'See outline (when ready)', leads: 'Outline' },
+        { screen: 'Library', button: 'New module (+)', leads: 'New module' },
+        { screen: 'Library', button: 'Filter chips and search', leads: 'Filters the list, stays on the screen' },
+        { screen: 'Library', button: 'A module row', leads: 'Module page' },
+        { screen: 'Library', button: 'Clear search and filters', leads: 'Resets the list' },
+        { screen: 'Stash', button: 'Start daily review', leads: 'Daily review' },
+        { screen: 'Stash', button: 'Open in chapter', leads: 'Reader' },
+        { screen: 'Stash', button: 'Remove', leads: 'Removes the card. When none are left: Library link or Undo' },
+        { screen: 'Daily review', button: 'Close (X)', leads: 'Stash' },
+        { screen: 'Daily review', button: 'Answer option, Next question', leads: 'Same behaviour as the chapter quiz' },
+        { screen: 'Daily review', button: 'Back to home / Go to Stash', leads: 'Home, Stash' },
+        { screen: 'Daily review', button: 'Review again', leads: 'Restarts the review' },
+        { screen: 'Upgrade', button: 'Close (X) / Maybe later / Start Plus', leads: 'Settings (checkout is handled by the payment provider)' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

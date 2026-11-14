@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn module</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:52px 20px 24px;gap:16px">
+
+<div style="display:flex;align-items:center;justify-content:space-between">
+<a href="Home.dc.html" aria-label="Back to home" style="width:44px;height:44px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;display:flex;align-items:center;justify-content:center;text-decoration:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></a>
+<div style="font-size:13px;color:#6F5A4C">Module</div>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:6px">
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:28px;line-height:34px">Stoicism, in 5 chapters</h1>
+<div style="font-size:14px;color:#6F5A4C">Beginner · about 30 minutes · 1 of 5 chapters open</div>
+</div>
+
+<div style="height:8px;border-radius:999px;background:#E0D2C0;overflow:hidden"><div style="width:8%;height:8px;border-radius:999px;background:#6F4630"></div></div>
+
+<a href="Reader.dc.html" style="height:52px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Continue chapter 1</a>
+
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+<a href="Discuss.dc.html" style="min-height:72px;box-sizing:border-box;background:#FFFBF6;border:1px solid #E0D2C0;border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:10px;text-decoration:none;color:#2B1A12"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6F4630" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:600">Discuss</div><div style="font-size:12px;line-height:16px;color:#6F5A4C">Talk it through with Claude</div></div></a>
+<a href="Memorise.dc.html" style="min-height:72px;box-sizing:border-box;background:#FFFBF6;border:1px solid #E0D2C0;border-radius:16px;padding:12px 14px;display:flex;align-items:center;gap:10px;text-decoration:none;color:#2B1A12"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#6F4630" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="flex:none"><rect x="3" y="6" width="14" height="12" rx="2"/><path d="M7 3h12a2 2 0 0 1 2 2v10"/></svg><div style="display:flex;flex-direction:column;gap:2px"><div style="font-size:16px;font-weight:600">Memorise</div><div style="font-size:12px;line-height:16px;color:#6F5A4C">Flashcards from this module</div></div></a>
+</div>
+
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px">Chapters</div>
+
+<div style="display:flex;flex-direction:column;gap:8px">
+<a href="Reader.dc.html" style="min-height:56px;box-sizing:border-box;background:#FFFBF6;border:2px solid #6F4630;border-radius:16px;padding:8px 14px;display:flex;align-items:center;gap:12px;text-decoration:none;color:#2B1A12"><div style="width:32px;height:32px;border-radius:999px;background:#6F4630;color:#FFFBF6;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">1</div><div style="flex:1;display:flex;flex-direction:column"><div style="font-size:16px;font-weight:600;line-height:22px">Where it began</div><div style="font-size:13px;color:#6F5A4C">Open · 3 of 5 cards read</div></div><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6F5A4C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></a>
+
+<button type="button" onClick="{{hintNext}}" style="width:100%;text-align:left;font-family:inherit;color:#2B1A12;min-height:56px;box-sizing:border-box;background:#EADBC8;border:1px solid #E0D2C0;border-radius:16px;padding:8px 14px;display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:999px;background:#FFFBF6;color:#4A2E1E;font-weight:600;font-size:14px;display:flex;align-items:center;justify-content:center;flex:none">2</div><div style="flex:1;display:flex;flex-direction:column"><div style="font-size:16px;font-weight:600;line-height:22px">Control what you can</div><div style="font-size:13px;color:#4A2E1E">Next up · opens after the chapter 1 quiz</div></div></button>
+
+<button type="button" onClick="{{hintLocked}}" style="width:100%;text-align:left;font-family:inherit;color:#2B1A12;min-height:56px;box-sizing:border-box;background:#EFE6DA;border:1px solid #E0D2C0;border-radius:16px;padding:8px 14px;display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:999px;background:#E0D2C0;color:#6F5A4C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><div style="flex:1;display:flex;flex-direction:column"><div style="font-size:16px;font-weight:600;line-height:22px;color:#6F5A4C">Character over comfort</div><div style="font-size:13px;color:#6F5A4C">Locked · written when you reach chapter 2</div></div></button>
+
+<button type="button" onClick="{{hintLocked}}" style="width:100%;text-align:left;font-family:inherit;color:#2B1A12;min-height:56px;box-sizing:border-box;background:#EFE6DA;border:1px solid #E0D2C0;border-radius:16px;padding:8px 14px;display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:999px;background:#E0D2C0;color:#6F5A4C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><div style="flex:1;display:flex;flex-direction:column"><div style="font-size:16px;font-weight:600;line-height:22px;color:#6F5A4C">Daily Stoic practices</div><div style="font-size:13px;color:#6F5A4C">Locked</div></div></button>
+
+<button type="button" onClick="{{hintLocked}}" style="width:100%;text-align:left;font-family:inherit;color:#2B1A12;min-height:56px;box-sizing:border-box;background:#EFE6DA;border:1px solid #E0D2C0;border-radius:16px;padding:8px 14px;display:flex;align-items:center;gap:12px"><div style="width:32px;height:32px;border-radius:999px;background:#E0D2C0;color:#6F5A4C;display:flex;align-items:center;justify-content:center;flex:none"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg></div><div style="flex:1;display:flex;flex-direction:column"><div style="font-size:16px;font-weight:600;line-height:22px;color:#6F5A4C">Stoicism today</div><div style="font-size:13px;color:#6F5A4C">Locked</div></div></button>
+</div>
+
+<div style="font-size:13px;line-height:19px;color:#6F5A4C;min-height:38px">{{note}}</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.state = { note: 'Titles are shown up front. Chapter content is written one step ahead of you, so it stays fresh and costs less.' };
+  }
+  renderVals() {
+    return {
+      note: this.state.note,
+      hintNext: () => this.setState({ note: 'Chapter 2 opens after you finish the chapter 1 quiz. Finish reading, then take the quiz.' }),
+      hintLocked: () => this.setState({ note: 'Locked for now. It is written when you reach the chapter before it, so you never wait on content you cannot use yet.' })
+    };
+  }
+}
+</script>
+</body>
+</html>

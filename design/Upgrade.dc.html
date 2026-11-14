@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>SwipeLearn upgrade</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+body{margin:0}
+a{color:#6F4630}
+</style>
+</helmet>
+<div style="width:390px;height:844px;box-sizing:border-box;background:#F5EDE3;color:#2B1A12;font-family:'Inter',system-ui,sans-serif;display:flex;flex-direction:column;overflow:hidden;padding:56px 20px 28px;gap:16px">
+
+<div style="display:flex;align-items:center;justify-content:space-between">
+<a href="Settings.dc.html" aria-label="Close" style="width:44px;height:44px;border:1px solid #E0D2C0;border-radius:999px;background:#FFFBF6;color:#2B1A12;display:flex;align-items:center;justify-content:center;text-decoration:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></a>
+</div>
+
+<div style="display:flex;flex-direction:column;gap:8px">
+<h1 style="margin:0;font-family:'Fraunces',Georgia,serif;font-weight:700;font-size:32px;line-height:38px">You’ve used 1 of 3 free modules</h1>
+<p style="margin:0;font-size:16px;line-height:24px;color:#6F5A4C">Plus removes the limit and adds longer voice sessions.</p>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px">
+<div style="background:#FFFBF6;border:1px solid #E0D2C0;border-radius:24px;box-shadow:0 2px 12px rgba(43,26,18,0.07);padding:16px;display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px">Free</div>
+<div style="font-size:14px;line-height:20px">3 modules<br>Chapter quizzes<br>Stash and review<br>Short voice sessions</div>
+</div>
+<div style="background:#EADBC8;border:2px solid #6F4630;border-radius:24px;padding:16px;display:flex;flex-direction:column;gap:10px">
+<div style="font-family:'Fraunces',Georgia,serif;font-weight:600;font-size:20px">Plus</div>
+<div style="font-size:14px;line-height:20px">Unlimited modules<br>12-week courses<br>Final exams<br>Longer voice sessions</div>
+<div style="font-size:13px;font-weight:600;color:#4A2E1E">[YOUR PRICE] a month</div>
+</div>
+</div>
+
+<div style="flex:1"></div>
+
+<div style="display:flex;flex-direction:column;gap:10px">
+<a href="Settings.dc.html" style="height:52px;border-radius:999px;background:#6F4630;box-shadow:0 6px 16px rgba(94,59,40,0.28);color:#FFFBF6;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Start Plus</a>
+<a href="Settings.dc.html" style="height:44px;color:#6F4630;font-size:16px;font-weight:600;display:flex;align-items:center;justify-content:center;text-decoration:none">Maybe later</a>
+<div style="font-size:12px;line-height:18px;color:#6F5A4C;text-align:center">Payment screen is handled by the payment provider and is not shown here.</div>
+</div>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":390,"height":844}}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
