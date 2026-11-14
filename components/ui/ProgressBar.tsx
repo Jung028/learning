@@ -5,7 +5,7 @@ interface ProgressBarProps {
 }
 
 export function ProgressBar({ value, max, label }: ProgressBarProps) {
-  const percent = Math.min(100, (value / max) * 100);
+  const percent = max > 0 ? Math.min(100, Math.max(0, (value / max) * 100)) : 0;
 
   return (
     <div

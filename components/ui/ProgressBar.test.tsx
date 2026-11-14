@@ -23,4 +23,16 @@ describe("ProgressBar", () => {
     const fill = screen.getByRole("progressbar").firstElementChild as HTMLElement;
     expect(fill.style.width).toBe("100%");
   });
+
+  test("renders 0% when max is 0 instead of NaN", () => {
+    render(<ProgressBar value={0} max={0} />);
+    const fill = screen.getByRole("progressbar").firstElementChild as HTMLElement;
+    expect(fill.style.width).toBe("0%");
+  });
+
+  test("clamps the fill at 0% when value is negative", () => {
+    render(<ProgressBar value={-2} max={5} />);
+    const fill = screen.getByRole("progressbar").firstElementChild as HTMLElement;
+    expect(fill.style.width).toBe("0%");
+  });
 });
