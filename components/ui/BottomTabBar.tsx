@@ -15,7 +15,7 @@ interface BottomTabBarProps {
 
 export function BottomTabBar({ tabs, activeKey }: BottomTabBarProps) {
   return (
-    <nav className="grid grid-cols-4 gap-0 bg-foam border border-crema rounded-card p-2 shadow-[0_2px_12px_rgba(43,26,18,0.07)]">
+    <nav className="grid grid-flow-col auto-cols-fr gap-0 bg-foam border border-crema rounded-card p-2 shadow-[0_2px_12px_rgba(43,26,18,0.07)]">
       {tabs.map((tab) => {
         const isActive = tab.key === activeKey;
         return (
@@ -27,7 +27,7 @@ export function BottomTabBar({ tabs, activeKey }: BottomTabBarProps) {
               isActive ? "text-mocha font-semibold" : "text-muted font-medium"
             }`}
           >
-            <span className="h-[22px] w-[22px]">{tab.icon}</span>
+            <span className="h-[22px] w-[22px]" aria-hidden="true">{tab.icon}</span>
             {tab.label}
           </Link>
         );
