@@ -4,7 +4,7 @@ interface ChipProps {
   onClick?: () => void;
 }
 
-const baseClasses = "h-10 px-4 rounded-pill font-sans text-sm";
+const baseClasses = "h-10 px-4 rounded-pill font-sans";
 
 const selectedClasses = "bg-cappuccino border-2 border-mocha font-semibold";
 const unselectedClasses = "bg-foam border border-crema font-medium";
