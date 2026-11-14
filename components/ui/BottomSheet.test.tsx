@@ -87,4 +87,37 @@ describe("BottomSheet", () => {
     fireEvent.keyDown(document, { key: "Escape" });
     expect(document.activeElement).toBe(trigger);
   });
+
+  test("renders the title as visible text", () => {
+    render(
+      <BottomSheet open={true} onClose={() => {}} title="Ask Claude">
+        Content
+      </BottomSheet>,
+    );
+    expect(screen.getByText("Ask Claude")).toBeInTheDocument();
+  });
+
+  test("clicking the close button calls onClose", async () => {
+    const onClose = mock();
+    render(
+      <BottomSheet open={true} onClose={onClose} title="Ask Claude">
+        Content
+      </BottomSheet>,
+    );
+    await userEvent.click(screen.getByRole("button", { name: "Close sheet" }));
+    expect(onClose).toHaveBeenCalledTimes(1);
+  });
+
+  test("Tab wraps focus back to the start of the panel", async () => {
+    render(
+      <BottomSheet open={true} onClose={() => {}} title="Ask Claude">
+        <p>Content with no other focusable elements</p>
+      </BottomSheet>,
+    );
+    const closeButton = screen.getByRole("button", { name: "Close sheet" });
+    closeButton.focus();
+    expect(document.activeElement).toBe(closeButton);
+    fireEvent.keyDown(document, { key: "Tab" });
+    expect(document.activeElement).toBe(closeButton);
+  });
 });
