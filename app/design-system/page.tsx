@@ -17,8 +17,7 @@ const tabs = [
 ];
 
 export default function DesignSystemPage() {
-  const [chipOneSelected, setChipOneSelected] = useState(true);
-  const [chipTwoSelected, setChipTwoSelected] = useState(false);
+  const [selectedChip, setSelectedChip] = useState<"one" | "two">("one");
   const [toggleChecked, setToggleChecked] = useState(false);
   const [sheetOpen, setSheetOpen] = useState(false);
 
@@ -40,13 +39,13 @@ export default function DesignSystemPage() {
         <div className="flex flex-wrap items-center gap-4">
           <Chip
             label="Selected"
-            selected={chipOneSelected}
-            onClick={() => setChipOneSelected((prev) => !prev)}
+            selected={selectedChip === "one"}
+            onClick={() => setSelectedChip("one")}
           />
           <Chip
             label="Unselected"
-            selected={chipTwoSelected}
-            onClick={() => setChipTwoSelected((prev) => !prev)}
+            selected={selectedChip === "two"}
+            onClick={() => setSelectedChip("two")}
           />
         </div>
       </section>
