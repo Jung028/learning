@@ -1,8 +1,8 @@
-// Not unit tested: depends on the Next.js middleware runtime (same limitation as getSupabaseServerClient). Verified manually.
+// Not unit tested: depends on the Next.js proxy runtime (same limitation as getSupabaseServerClient). Verified manually.
 import { type NextRequest, NextResponse } from "next/server";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   let response = NextResponse.next({ request });
   const supabase = createSupabaseServerClient({
     getAll: () => request.cookies.getAll(),
