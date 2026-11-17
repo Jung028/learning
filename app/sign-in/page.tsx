@@ -21,6 +21,18 @@ function errorMessageFor(code: string | undefined): string | null {
 // request-scoped `cookies()`, which has no meaningful behavior outside an
 // actual Next.js request and isn't testable under Bun's test runner — same
 // limitation documented in `lib/supabase/server.ts`/`server.test.ts`.
+//
+// This page is inherently dynamic: it reads `cookies()` (via
+// `getSupabaseServerClient()`) to decide whether to redirect, and reads
+// `searchParams.error` for the callback's error marker. There's no
+// meaningful static shell to prerender, so opt out of instant-navigation
+// validation and let it block on the server rather than wrapping either
+// read in a `<Suspense>` boundary. (`dynamic = "force-dynamic"` is the
+// pre-Cache-Components equivalent, but this project has `cacheComponents:
+// true` in next.config.ts, where that export is rejected at build time in
+// favor of `instant`.)
+export const instant = false;
+
 export default async function SignInPage({
   searchParams,
 }: {
