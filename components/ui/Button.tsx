@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 
-export type ButtonVariant = "primary" | "secondary" | "text" | "danger";
+export type ButtonVariant = "primary" | "secondary" | "text" | "danger" | "dark" | "outline";
 
 interface ButtonProps {
   variant?: ButtonVariant;
@@ -17,6 +17,8 @@ const variantClasses: Record<ButtonVariant, string> = {
   secondary: "bg-cappuccino text-ink-hover",
   text: "bg-transparent text-mocha",
   danger: "border border-cherry bg-foam text-cherry",
+  dark: "bg-ink text-foam",
+  outline: "bg-foam border border-crema text-ink",
 };
 
 export function Button({

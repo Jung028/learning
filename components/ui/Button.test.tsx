@@ -20,6 +20,8 @@ describe("Button", () => {
     ["secondary", "bg-cappuccino"],
     ["text", "text-mocha"],
     ["danger", "border-cherry"],
+    ["dark", "bg-ink"],
+    ["outline", "border-crema"],
   ] satisfies [ButtonVariant, string][])("variant=%s gets class %s", (variant, className) => {
     render(<Button variant={variant}>Go</Button>);
     expect(screen.getByRole("button")).toHaveClass(className);
