@@ -17,8 +17,8 @@ Backlog in build order. `FR-n` refers to the requirement IDs in [system-analysis
 
 - [x] T-010 Create the Next.js project with TypeScript and Tailwind; map design tokens to the theme (ADR-002)
 - [x] T-011 Build shared components: primary, secondary, text and icon buttons, chips, toggles, cards, progress bar, tab bar, bottom sheet
-- [ ] T-012 Set up Supabase project, tables and row-level security (ADR-004)
-  - Schema + RLS migrations and client factories landed (commits 0aa5d9a..2d2e9c0), verified only against a local Postgres mock. Remaining: provision the real project, apply both migrations, run `get_advisors` (security + performance), add `.env.example`.
+- [x] T-012 Set up Supabase project, tables and row-level security (ADR-004)
+  - Live project `swipelearn` (`ptinovkgkrvcicrrftcc`) provisioned, schema + RLS migrations applied, `get_advisors` (security + performance) clean except informational unindexed-FK notices (follow-up, not blocking). Cross-user isolation, anon default-deny, cascade delete and the ownership-chain write hole (self-referential `module_id`/`chapter_id`/`quiz_id`/`card_id` on `progress`/`attempts`/`stash_items` — found and fixed in `20261117000001_fix_rls_ownership_chain_and_perf.sql`) all verified against the live database. `.env.example` still needs to be added manually — it's blocked by a local permission rule on `.env*` files; see repo root for the two-line contents to drop in.
 - [ ] T-013 Sign-in with email link, Apple and Google (FR-11)
 - [ ] T-014 Deploy to Vercel with a preview per pull request (ADR-005)
 - [ ] T-015 Add analytics events and a consent notice (ADR-017)
