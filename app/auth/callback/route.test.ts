@@ -18,4 +18,11 @@ describe("determineRedirectPath", () => {
     expect(await determineRedirectPath(null, exchange)).toBe("/sign-in?error=missing_code");
     expect(exchange).not.toHaveBeenCalled();
   });
+
+  test("redirects to sign-in with an error marker when the exchange throws", async () => {
+    const exchange = mock(async () => {
+      throw new Error("network failure");
+    });
+    expect(await determineRedirectPath("abc123", exchange)).toBe("/sign-in?error=auth_failed");
+  });
 });

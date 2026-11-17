@@ -7,34 +7,48 @@ import { getSupabaseBrowserClient } from "@/lib/supabase/client";
 
 interface SignInFormProps {
   getClient?: () => SupabaseClient;
+  initialError?: string | null;
 }
 
-export function SignInForm({ getClient = getSupabaseBrowserClient }: SignInFormProps) {
+export function SignInForm({ getClient = getSupabaseBrowserClient, initialError = null }: SignInFormProps) {
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<"idle" | "sent">("idle");
-  const [error, setError] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(initialError);
 
   async function handleOAuth(provider: "apple" | "google") {
     setError(null);
-    const { error } = await getClient().auth.signInWithOAuth({
-      provider,
-      options: { redirectTo: `${window.location.origin}/auth/callback` },
-    });
-    if (error) setError(error.message);
+    try {
+      const { error } = await getClient().auth.signInWithOAuth({
+        provider,
+        options: { redirectTo: `${window.location.origin}/auth/callback` },
+      });
+      if (error) setError(error.message);
+    } catch {
+      setError("Something went wrong. Please try again.");
+    }
   }
 
   async function handleEmailSubmit(e: FormEvent) {
     e.preventDefault();
     if (!email) return;
     setError(null);
-    const { error } = await getClient().auth.signInWithOtp({
-      email,
-      options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
-    });
-    if (error) {
-      setError(error.message);
-    } else {
-      setStatus("sent");
+    try {
+      // Note: this uses the PKCE flow by default (via @supabase/ssr's browser
+      // client), which stores the code verifier in a cookie on this browser.
+      // The link only completes sign-in if it's opened in this same
+      // browser/device — opening it elsewhere (e.g. a different device) will
+      // fail at the callback with `auth_failed`.
+      const { error } = await getClient().auth.signInWithOtp({
+        email,
+        options: { emailRedirectTo: `${window.location.origin}/auth/callback` },
+      });
+      if (error) {
+        setError(error.message);
+      } else {
+        setStatus("sent");
+      }
+    } catch {
+      setError("Something went wrong. Please try again.");
     }
   }
 

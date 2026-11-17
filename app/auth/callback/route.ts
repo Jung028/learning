@@ -12,8 +12,12 @@ export async function determineRedirectPath(
 ): Promise<string> {
   if (!code) return "/sign-in?error=missing_code";
 
-  const { error } = await exchangeCodeForSession(code);
-  if (error) return "/sign-in?error=auth_failed";
+  try {
+    const { error } = await exchangeCodeForSession(code);
+    if (error) return "/sign-in?error=auth_failed";
+  } catch {
+    return "/sign-in?error=auth_failed";
+  }
 
   return "/";
 }

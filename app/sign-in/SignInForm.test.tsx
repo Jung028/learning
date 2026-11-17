@@ -67,4 +67,33 @@ describe("SignInForm", () => {
     await userEvent.click(screen.getByRole("button", { name: "Send me a sign-in link" }));
     expect(await screen.findByRole("alert")).toHaveTextContent("rate limited");
   });
+
+  test("shows an initial error passed in via the initialError prop", async () => {
+    const client = fakeClient();
+    render(<SignInForm getClient={() => client} initialError="That sign-in link didn't work." />);
+    expect(await screen.findByRole("alert")).toHaveTextContent("That sign-in link didn't work.");
+  });
+
+  test("shows a generic error message when signInWithOAuth rejects", async () => {
+    const client = fakeClient({
+      signInWithOAuth: mock(async () => {
+        throw new Error("network failure");
+      }),
+    });
+    render(<SignInForm getClient={() => client} />);
+    await userEvent.click(screen.getByRole("button", { name: "Continue with Apple" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("Something went wrong. Please try again.");
+  });
+
+  test("shows a generic error message when signInWithOtp rejects", async () => {
+    const client = fakeClient({
+      signInWithOtp: mock(async () => {
+        throw new Error("network failure");
+      }),
+    });
+    render(<SignInForm getClient={() => client} />);
+    await userEvent.type(screen.getByLabelText("Email"), "learner@example.com");
+    await userEvent.click(screen.getByRole("button", { name: "Send me a sign-in link" }));
+    expect(await screen.findByRole("alert")).toHaveTextContent("Something went wrong. Please try again.");
+  });
 });
