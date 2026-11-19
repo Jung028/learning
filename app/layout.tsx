@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { fraunces, inter } from "./fonts";
+import { AnalyticsInit } from "../components/AnalyticsInit";
+import { ConsentBanner } from "../components/ConsentBanner";
 
 export const metadata: Metadata = {
   title: "SwipeLearn",
@@ -15,7 +17,11 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     >
       <body
         className={`${fraunces.variable} ${inter.variable} font-sans min-h-full flex flex-col`}
-      >{children}</body>
+      >
+        <AnalyticsInit />
+        {children}
+        <ConsentBanner />
+      </body>
     </html>
   );
 }
