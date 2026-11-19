@@ -28,18 +28,23 @@ function getClientIp(request: NextRequest): string | null {
   return request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ?? null;
 }
 
-export type RouteHandler = (request: NextRequest, context: { userId: string }) => Promise<Response>;
+export type RouteHandler<Extra = Record<string, unknown>> = (
+  request: NextRequest,
+  context: { userId: string } & Extra,
+) => Promise<Response>;
 
 /**
  * Wraps a Next.js route handler with the auth check, rate limits, and daily
  * cap from T-016 (ADR-004, architecture.md §9-10), returning the shared
  * `{ error: { code, message } }` shape on failure. `bucket` scopes the
  * daily cap (e.g. "generation") so different kinds of guarded routes don't
- * share one counter. Not unit tested directly — it's Next.js/Supabase
+ * share one counter. `Extra` lets a dynamic route (e.g. `{ params }`) flow
+ * through to the handler untouched — Next.js passes it as `guarded`'s
+ * second argument. Not unit tested directly — it's Next.js/Supabase
  * wiring over `guardRequest`, which is (see routeGuard.test.ts).
  */
-export function withRouteGuards(bucket: string, handler: RouteHandler) {
-  return async function guarded(request: NextRequest): Promise<Response> {
+export function withRouteGuards<Extra = Record<string, unknown>>(bucket: string, handler: RouteHandler<Extra>) {
+  return async function guarded(request: NextRequest, extra?: Extra): Promise<Response> {
     const supabase = await getSupabaseServerClient();
 
     const result = await guardRequest({
@@ -59,6 +64,6 @@ export function withRouteGuards(bucket: string, handler: RouteHandler) {
       return jsonErrorResponse(result.status, result.code, result.message);
     }
 
-    return handler(request, { userId: result.userId });
+    return handler(request, { userId: result.userId, ...(extra as Extra) });
   };
 }

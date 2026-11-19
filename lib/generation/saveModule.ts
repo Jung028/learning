@@ -38,11 +38,22 @@ export async function saveModuleWithChapters(
     throw moduleError ?? new Error("Failed to create module.");
   }
 
+  const chapters = await insertChaptersForOutline(supabase, module.id, outline);
+
+  return { moduleId: module.id, chapters };
+}
+
+/** Shared by saveModuleWithChapters and regenerate's replaceChapters (outlineEditOps.ts). */
+export async function insertChaptersForOutline(
+  supabase: SupabaseClient,
+  moduleId: string,
+  outline: Outline,
+): Promise<SavedChapter[]> {
   const { data: chapters, error: chaptersError } = await supabase
     .from("chapters")
     .insert(
       outline.chapters.map((chapter, index) => ({
-        module_id: module.id,
+        module_id: moduleId,
         order: index,
         title: chapter.title,
         objectives: chapter.objectives,
@@ -56,5 +67,5 @@ export async function saveModuleWithChapters(
     throw chaptersError ?? new Error("Failed to create chapters.");
   }
 
-  return { moduleId: module.id, chapters };
+  return chapters;
 }
