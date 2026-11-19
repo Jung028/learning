@@ -30,7 +30,8 @@ Backlog in build order. `FR-n` refers to the requirement IDs in [system-analysis
 
 ## Phase 2: generation (MVP core)
 
-- [ ] T-020 Define JSON schemas for outline, cards, quiz and quiz check (ADR-006)
+- [x] T-020 Define JSON schemas for outline, cards, quiz and quiz check (ADR-006)
+  - `lib/generation/schemas.ts` has the four JSON Schemas (plain JSON Schema objects, the same shape Claude's structured-output `input_schema` and `validateAgainstSchema` — new in `validate.ts`, using `ajv` — both take). `outlineSchema(chapterCount)` is parameterized because chapter count is a call input (3/5/8, from `length.ts`'s `CHAPTER_COUNT_BY_LENGTH`, matching the design's chapter-count chips exactly); cards (8-12) and quiz/quiz-check (always 5 questions) are fixed. These cover structural/type contract only — a card's 45-word cap and "exactly one defensible answer" aren't natural JSON Schema constraints, so they're left for T-026's retry logic, not encoded here. Nothing calls these yet; T-022 (outline generation) is the first consumer. Verified: 143 tests pass (22 new), lint and production build clean.
 - [ ] T-021 Topic safety check before outline (FR-25, ADR-019)
 - [ ] T-022 Outline generation and the Generating screen (FR-1)
 - [ ] T-023 Outline editing: remove chapters, regenerate (FR-2)
