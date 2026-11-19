@@ -1,6 +1,15 @@
 import { describe, expect, test } from "bun:test";
 import Ajv from "ajv";
-import { CARD_COUNT_MAX, CARD_COUNT_MIN, QUIZ_QUESTION_COUNT, cardsSchema, outlineSchema, quizCheckSchema, quizSchema } from "./schemas";
+import {
+  CARD_COUNT_MAX,
+  CARD_COUNT_MIN,
+  QUIZ_QUESTION_COUNT,
+  cardsSchema,
+  outlineSchema,
+  quizCheckSchema,
+  quizSchema,
+  topicSafetySchema,
+} from "./schemas";
 
 const ajv = new Ajv();
 
@@ -151,5 +160,27 @@ describe("quizCheckSchema", () => {
 
   test("rejects a result count that doesn't match the question count", () => {
     expect(validate(makeResults(QUIZ_QUESTION_COUNT - 1))).toBe(false);
+  });
+});
+
+describe("topicSafetySchema", () => {
+  const validate = ajv.compile(topicSafetySchema);
+
+  test("accepts a refused topic with a reason", () => {
+    expect(validate({ refused: true, refusalReason: "Not something we can teach safely.", advisoryCategory: "none" })).toBe(
+      true,
+    );
+  });
+
+  test("accepts an allowed topic with an advisory category", () => {
+    expect(validate({ refused: false, advisoryCategory: "medical" })).toBe(true);
+  });
+
+  test("rejects an unknown advisory category", () => {
+    expect(validate({ refused: false, advisoryCategory: "finance" })).toBe(false);
+  });
+
+  test("rejects a missing refused field", () => {
+    expect(validate({ advisoryCategory: "none" })).toBe(false);
   });
 });

@@ -123,6 +123,24 @@ export const quizSchema: JsonSchema = {
   },
 };
 
+export type TopicSafetyCheck = {
+  refused: boolean;
+  refusalReason?: string;
+  advisoryCategory: "medical" | "legal" | "money" | "none";
+};
+
+/** FR-25/ADR-019: refuse harmful topics before generating; flag medical/legal/money topics for the "general information, not advice" banner. */
+export const topicSafetySchema: JsonSchema = {
+  type: "object",
+  additionalProperties: false,
+  required: ["refused", "advisoryCategory"],
+  properties: {
+    refused: { type: "boolean" },
+    refusalReason: { type: "string" },
+    advisoryCategory: { type: "string", enum: ["medical", "legal", "money", "none"] },
+  },
+};
+
 export type QuizCheck = {
   results: { questionIndex: number; status: "ok" | "flagged"; reason?: string }[];
 };
