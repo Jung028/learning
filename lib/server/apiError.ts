@@ -1,4 +1,9 @@
-export type ApiErrorCode = "unauthenticated" | "rate_limited" | "daily_limit_reached";
+export type ApiErrorCode =
+  | "unauthenticated"
+  | "rate_limited"
+  | "daily_limit_reached"
+  | "invalid_request"
+  | "generation_failed";
 
 export type ApiErrorBody = { error: { code: ApiErrorCode; message: string } };
 
